@@ -22,36 +22,36 @@ const translations = {
 const recentFairs = {
   tr: [
     {
+      year: 2025,
+      name: "2025 yılı fuarları",
+      image: "img/fairs/2025/1.jpeg",
+    },
+    {
       year: 2024,
-      name: "Ambalaj Fuarı İstanbul",
-      image: "/fairs/fair-1.jpg",
+      name: "2024 yılı fuarları",
+      image: "img/fairs/2024/19.jpeg",
     },
     {
       year: 2023,
-      name: "Oluklu Fuar",
-      image: "/fairs/fair-2.jpg",
-    },
-    {
-      year: 2023,
-      name: "Avrasya Ambalaj",
-      image: "/fairs/fair-3.jpg",
+      name: "2023 yılı fuarları",
+      image: "img/fairs/2023/8.jpeg",
     },
   ],
   en: [
     {
+      year: 2025,
+      name: "Fairs of 2025",
+      image: "img/fairs/2025/1.jpeg",
+    },
+    {
       year: 2024,
-      name: "Packaging Fair Istanbul",
-      image: "/fairs/fair-1.jpg",
+      name: "Fairs of 2024",
+      image: "img/fairs/2024/19.jpeg",
     },
     {
       year: 2023,
-      name: "Corrugated Expo",
-      image: "/fairs/fair-2.jpg",
-    },
-    {
-      year: 2023,
-      name: "Eurasia Packaging",
-      image: "/fairs/fair-3.jpg",
+      name: "Fairs of 2023",
+      image: "img/fairs/2023/8.jpeg",
     },
   ],
 };

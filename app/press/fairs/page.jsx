@@ -26,12 +26,40 @@ export default function Fairs() {
   const t = translations[language];
 
   const currentYear = new Date().getFullYear();
-  const years = Array.from(
-    { length: currentYear - 2009 + 1 },
-    (_, i) => currentYear - i
-  );
+  const years = [
+    "Drupa",
+    ...Array.from(
+      { length: currentYear - 2009 + 1 },
+      (_, i) => currentYear - i
+    ),
+  ];
 
   const fairPhotosByYear = {
+    Drupa: [
+      { image: "img/fairs/drupa/1.jpeg" },
+      { image: "img/fairs/drupa/2.jpeg" },
+      { image: "img/fairs/drupa/3.jpeg" },
+      { image: "img/fairs/drupa/4.jpeg" },
+      { image: "img/fairs/drupa/5.jpeg" },
+      { image: "img/fairs/drupa/6.jpeg" },
+      { image: "img/fairs/drupa/7.jpeg" },
+      { image: "img/fairs/drupa/8.jpeg" },
+      { image: "img/fairs/drupa/9.jpeg" },
+      { image: "img/fairs/drupa/10.jpeg" },
+      { image: "img/fairs/drupa/11.jpeg" },
+      { image: "img/fairs/drupa/12.jpeg" },
+      { image: "img/fairs/drupa/13.jpeg" },
+      { image: "img/fairs/drupa/14.jpeg" },
+      { image: "img/fairs/drupa/15.jpeg" },
+      { image: "img/fairs/drupa/16.jpeg" },
+      { image: "img/fairs/drupa/17.jpeg" },
+      { image: "img/fairs/drupa/18.jpeg" },
+      { image: "img/fairs/drupa/19.jpeg" },
+      { image: "img/fairs/drupa/20.jpeg" },
+      { image: "img/fairs/drupa/21.jpeg" },
+      { image: "img/fairs/drupa/22.jpeg" },
+      { image: "img/fairs/drupa/23.jpeg" },
+    ],
     2025: [
       {
         image: "packaging fair exhibition booth 2024",
@@ -48,19 +76,42 @@ export default function Fairs() {
       },
     ],
     2024: [
-      {
-        image: "packaging fair exhibition booth 2024",
-        alt: "Ambalaj Fuarı 2024",
-      },
-      {
-        image: "machinery display at trade show 2024",
-        alt: "Makina Sergisi 2024",
-      },
-      { image: "business meeting at fair 2024", alt: "Fuar Görüşmeleri 2024" },
-      {
-        image: "product demonstration at exhibition 2024",
-        alt: "Ürün Tanıtımı 2024",
-      },
+      { image: "img/fairs/2024/1.jpeg" },
+      { image: "img/fairs/2024/2.jpeg" },
+      { image: "img/fairs/2024/3.jpeg" },
+      { image: "img/fairs/2024/4.jpeg" },
+      { image: "img/fairs/2024/5.jpeg" },
+      { image: "img/fairs/2024/6.jpeg" },
+      { image: "img/fairs/2024/7.jpeg" },
+      { image: "img/fairs/2024/8.jpeg" },
+      { image: "img/fairs/2024/9.jpeg" },
+      { image: "img/fairs/2024/10.jpeg" },
+      { image: "img/fairs/2024/11.jpeg" },
+      { image: "img/fairs/2024/12.jpeg" },
+      { image: "img/fairs/2024/13.jpeg" },
+      { image: "img/fairs/2024/14.jpeg" },
+      { image: "img/fairs/2024/15.jpeg" },
+      { image: "img/fairs/2024/16.jpeg" },
+      { image: "img/fairs/2024/17.jpeg" },
+      { image: "img/fairs/2024/18.jpeg" },
+      { image: "img/fairs/2024/19.jpeg" },
+      { image: "img/fairs/2024/20.jpeg" },
+      { image: "img/fairs/2024/21.jpeg" },
+      { image: "img/fairs/2024/22.jpeg" },
+      { image: "img/fairs/2024/23.jpeg" },
+      { image: "img/fairs/2024/24.jpeg" },
+      { image: "img/fairs/2024/25.jpeg" },
+      { image: "img/fairs/2024/26.jpeg" },
+      { image: "img/fairs/2024/27.jpeg" },
+      { image: "img/fairs/2024/28.jpeg" },
+      { image: "img/fairs/2024/29.jpeg" },
+      { image: "img/fairs/2024/30.jpeg" },
+      { image: "img/fairs/2024/31.jpeg" },
+      { image: "img/fairs/2024/32.jpeg" },
+      { image: "img/fairs/2024/33.jpeg" },
+      { image: "img/fairs/2024/34.jpeg" },
+      { image: "img/fairs/2024/35.jpeg" },
+      { image: "img/fairs/2024/36.jpeg" },
     ],
     2023: [
       { image: "img/fairs/2023/1.jpeg" },
@@ -117,6 +168,7 @@ export default function Fairs() {
     //   { image: "machinery fair 2020", alt: "Makina Fuarı 2020" },
     //   { image: "business conference 2020", alt: "İş Konferansı 2020" },
     // ],
+
     2019: [
       { image: "img/fairs/2019/1.jpg" },
       { image: "img/fairs/2019/2.jpg" },

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
@@ -10,10 +10,10 @@ const translations = {
   tr: {
     home: "Ana Sayfa",
     about: "Hakkımızda",
+    lightingText: "Aydınlatma Metni",
     products: "Ürünler",
     fullyAutomatic: "Tam Otomatik",
     sloterMachine: "Sloter Makinası",
-    // inlineMachine: "İnline Makinası",
     jumboSloter: "Jumbo Sloter Makinası",
     miniInline: "Mini İnline Makinası",
     boxFoldingGluing: "Kutu Katlama ve Yapıştırma Makinası",
@@ -38,10 +38,10 @@ const translations = {
   en: {
     home: "Home",
     about: "About Us",
+    lightingText: "Lighting Text",
     products: "Products",
     fullyAutomatic: "Fully Automatic",
     sloterMachine: "Slotter Machine",
-    // inlineMachine: "Inline Machine",
     jumboSloter: "Jumbo Slotter Machine",
     miniInline: "Mini Inline Machine",
     boxFoldingGluing: "Box Folding and Gluing Machine",
@@ -71,6 +71,12 @@ export default function Header({ language, setLanguage }) {
   const [automaticOpen, setAutomaticOpen] = useState(false);
   const [semiAutomaticOpen, setSemiAutomaticOpen] = useState(false);
   const [pressOpen, setPressOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+
+  const productsTimeout = useRef(null);
+  const pressTimeout = useRef(null);
+  const aboutTimeout = useRef(null);
+
   const router = useRouter();
   const pathname = usePathname();
   const t = translations[language];
@@ -87,6 +93,15 @@ export default function Header({ language, setLanguage }) {
     setMobileMenuOpen(false);
   };
 
+  // Hover open/close helpers (with delay)
+  const handleOpen = (setFn, ref) => {
+    clearTimeout(ref.current);
+    setFn(true);
+  };
+  const handleClose = (setFn, ref) => {
+    ref.current = setTimeout(() => setFn(false), 150);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground border-b border-border/10">
       <div className="container mx-auto px-4">
@@ -95,10 +110,10 @@ export default function Header({ language, setLanguage }) {
           <div className="flex items-center">
             <Link href="/" className="flex items-center cursor-pointer">
               <Image
-                src="/seri_makina.png" // logo dosyanın yolu (public klasörüne koy)
-                alt="Seri Makina Logo" // erişilebilirlik için açıklama
-                width={250} // logonun genişliği
-                height={80} // logonun yüksekliği
+                src="/seri_makina.png"
+                alt="Seri Makina Logo"
+                width={250}
+                height={80}
                 className="hover:opacity-80 transition-opacity"
               />
             </Link>
@@ -112,73 +127,80 @@ export default function Header({ language, setLanguage }) {
             >
               {t.home}
             </button>
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-sm hover:text-accent transition-colors"
-            >
-              {t.about}
-            </button>
 
-            <div className="relative group">
-              <button
-                onClick={() => scrollToSection("products")}
-                className="text-sm hover:text-accent transition-colors flex items-center gap-1"
-                onMouseEnter={() => setProductsOpen(true)}
-                onMouseLeave={() => setProductsOpen(false)}
-              >
+            {/* Hakkımızda with submenu */}
+            <div
+              className="relative"
+              onMouseEnter={() => handleOpen(setAboutOpen, aboutTimeout)}
+              onMouseLeave={() => handleClose(setAboutOpen, aboutTimeout)}
+            >
+              <button className="text-sm hover:text-accent transition-colors flex items-center gap-1">
+                {t.about}
+                <ChevronDown size={16} />
+              </button>
+              {aboutOpen && (
+                <div className="absolute top-full left-0 mt-2 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[220px]">
+                  <button
+                    onClick={() => scrollToSection("about")}
+                    className="block w-full text-left px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    {t.about}
+                  </button>
+                  <Link
+                    href="/kvkk"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    {t.lightingText}
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Ürünler */}
+            <div
+              className="relative"
+              onMouseEnter={() => handleOpen(setProductsOpen, productsTimeout)}
+              onMouseLeave={() => handleClose(setProductsOpen, productsTimeout)}
+            >
+              <button className="text-sm hover:text-accent transition-colors flex items-center gap-1">
                 {t.products}
                 <ChevronDown size={16} />
               </button>
               {productsOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[250px]"
-                  onMouseEnter={() => setProductsOpen(true)}
-                  onMouseLeave={() => setProductsOpen(false)}
-                >
-                  {/* Fully Automatic Submenu */}
+                <div className="absolute top-full left-0 mt-2 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[250px]">
+                  {/* Fully Automatic */}
                   <div
                     className="relative group/sub"
                     onMouseEnter={() => setAutomaticOpen(true)}
                     onMouseLeave={() => setAutomaticOpen(false)}
                   >
-                    <button className="flex items-center justify-between w-full px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+                    <button className="flex items-center justify-between w-full px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground">
                       {t.fullyAutomatic}
                       <ChevronDown size={16} className="-rotate-90" />
                     </button>
                     {automaticOpen && (
-                      <div className="absolute left-full top-0 ml-1 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[280px]">
+                      <div className="absolute left-full top-0 ml-1 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[250px]">
                         <Link
                           href="/products?category=automatic&product=sloter"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.sloterMachine}
                         </Link>
                         <Link
-                          href="/products?category=automatic&product=inline"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
-                        >
-                          {t.inlineMachine}
-                        </Link>
-                        <Link
                           href="/products?category=automatic&product=jumbo-sloter"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.jumboSloter}
                         </Link>
                         <Link
                           href="/products?category=automatic&product=mini-inline"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.miniInline}
                         </Link>
                         <Link
                           href="/products?category=automatic&product=box-folding"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.boxFoldingGluing}
                         </Link>
@@ -186,73 +208,35 @@ export default function Header({ language, setLanguage }) {
                     )}
                   </div>
 
-                  {/* Semi-Automatic Submenu */}
+                  {/* Semi-Automatic */}
                   <div
                     className="relative group/sub"
                     onMouseEnter={() => setSemiAutomaticOpen(true)}
                     onMouseLeave={() => setSemiAutomaticOpen(false)}
                   >
-                    <button className="flex items-center justify-between w-full px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+                    <button className="flex items-center justify-between w-full px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground">
                       {t.semiAutomatic}
                       <ChevronDown size={16} className="-rotate-90" />
                     </button>
                     {semiAutomaticOpen && (
-                      <div className="absolute left-full top-0 ml-1 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[300px]">
+                      <div className="absolute left-full top-0 ml-1 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[260px]">
                         <Link
                           href="/products?category=semi-automatic&product=grooving"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.groovingMachine}
                         </Link>
                         <Link
                           href="/products?category=semi-automatic&product=manual-stitching"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.manualStitching}
                         </Link>
                         <Link
-                          href="/products?category=semi-automatic&product=channel-opening"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
-                        >
-                          {t.channelOpening}
-                        </Link>
-                        <Link
-                          href="/products?category=semi-automatic&product=cutting"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
-                        >
-                          {t.cuttingMachine}
-                        </Link>
-                        <Link
-                          href="/products?category=semi-automatic&product=box-folding"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
-                        >
-                          {t.boxFoldingGluingSemi}
-                        </Link>
-                        <Link
                           href="/products?category=semi-automatic&product=box-stitching"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.boxStitching}
-                        </Link>
-                        <Link
-                          href="/products?category=semi-automatic&product=two-color-printing"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
-                        >
-                          {t.twoColorPrinting}
-                        </Link>
-                        <Link
-                          href="/products?category=semi-automatic&product=box-stitching-gluing"
-                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
-                          onClick={() => setProductsOpen(false)}
-                        >
-                          {t.boxStitchingGluing}
                         </Link>
                       </div>
                     )}
@@ -275,30 +259,27 @@ export default function Header({ language, setLanguage }) {
               {t.videos}
             </button>
 
-            <div className="relative group">
-              <button
-                className="text-sm hover:text-accent transition-colors flex items-center gap-1"
-                onMouseEnter={() => setPressOpen(true)}
-                onMouseLeave={() => setPressOpen(false)}
-              >
+            {/* Basın */}
+            <div
+              className="relative"
+              onMouseEnter={() => handleOpen(setPressOpen, pressTimeout)}
+              onMouseLeave={() => handleClose(setPressOpen, pressTimeout)}
+            >
+              <button className="text-sm hover:text-accent transition-colors flex items-center gap-1">
                 {t.press}
                 <ChevronDown size={16} />
               </button>
               {pressOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[200px]"
-                  onMouseEnter={() => setPressOpen(true)}
-                  onMouseLeave={() => setPressOpen(false)}
-                >
+                <div className="absolute top-full left-0 mt-2 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[200px]">
                   <Link
                     href="/press/media"
-                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                   >
                     {t.media}
                   </Link>
                   <Link
                     href="/press/fairs"
-                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                   >
                     {t.fairs}
                   </Link>
@@ -329,7 +310,7 @@ export default function Header({ language, setLanguage }) {
             </a>
           </nav>
 
-          {/* Language Switcher & Mobile Menu */}
+          {/* Dil Değiştirici ve Mobil Menü */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 bg-secondary/10 rounded-lg p-1">
               <button
@@ -354,7 +335,7 @@ export default function Header({ language, setLanguage }) {
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobil Menü Butonu */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 hover:bg-secondary/10 rounded-lg transition-colors"
@@ -363,183 +344,6 @@ export default function Header({ language, setLanguage }) {
             </button>
           </div>
         </div>
-
-        {mobileMenuOpen && (
-          <nav className="lg:hidden py-4 border-t border-border/10">
-            <div className="flex flex-col gap-4">
-              <button
-                onClick={() => scrollToSection("home")}
-                className="text-left py-2 hover:text-accent transition-colors"
-              >
-                {t.home}
-              </button>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="text-left py-2 hover:text-accent transition-colors"
-              >
-                {t.about}
-              </button>
-              <div className="flex flex-col gap-2">
-                <button
-                  onClick={() => scrollToSection("products")}
-                  className="text-left text-sm font-semibold hover:text-accent transition-colors"
-                >
-                  {t.products}
-                </button>
-                <div className="pl-4 flex flex-col gap-2">
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {t.fullyAutomatic}
-                  </span>
-                  <div className="pl-4 flex flex-col gap-2">
-                    <Link
-                      href="/products?category=automatic&product=sloter"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.sloterMachine}
-                    </Link>
-                    <Link
-                      href="/products?category=automatic&product=inline"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.inlineMachine}
-                    </Link>
-                    <Link
-                      href="/products?category=automatic&product=jumbo-sloter"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.jumboSloter}
-                    </Link>
-                    <Link
-                      href="/products?category=automatic&product=mini-inline"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.miniInline}
-                    </Link>
-                    <Link
-                      href="/products?category=automatic&product=box-folding"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.boxFoldingGluing}
-                    </Link>
-                  </div>
-                  <span className="text-sm font-medium text-muted-foreground mt-2">
-                    {t.semiAutomatic}
-                  </span>
-                  <div className="pl-4 flex flex-col gap-2">
-                    <Link
-                      href="/products?category=semi-automatic&product=grooving"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.groovingMachine}
-                    </Link>
-                    <Link
-                      href="/products?category=semi-automatic&product=manual-stitching"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.manualStitching}
-                    </Link>
-                    <Link
-                      href="/products?category=semi-automatic&product=channel-opening"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.channelOpening}
-                    </Link>
-                    <Link
-                      href="/products?category=semi-automatic&product=cutting"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.cuttingMachine}
-                    </Link>
-                    <Link
-                      href="/products?category=semi-automatic&product=box-folding"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.boxFoldingGluingSemi}
-                    </Link>
-                    <Link
-                      href="/products?category=semi-automatic&product=box-stitching"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.boxStitching}
-                    </Link>
-                    <Link
-                      href="/products?category=semi-automatic&product=two-color-printing"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.twoColorPrinting}
-                    </Link>
-                    <Link
-                      href="/products?category=semi-automatic&product=box-stitching-gluing"
-                      className="text-sm hover:text-accent"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t.boxStitchingGluing}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <Link
-                href="/second-hand"
-                className="text-left py-2 hover:text-accent transition-colors"
-              >
-                {t.secondHand}
-              </Link>
-              <button
-                onClick={() => scrollToSection("videos")}
-                className="text-left py-2 hover:text-accent transition-colors"
-              >
-                {t.videos}
-              </button>
-              <div className="flex flex-col gap-2">
-                <span className="text-sm font-semibold">{t.press}</span>
-                <Link
-                  href="/press/media"
-                  className="text-left py-2 pl-4 hover:text-accent transition-colors text-sm"
-                >
-                  {t.media}
-                </Link>
-                <Link
-                  href="/press/fairs"
-                  className="text-left py-2 pl-4 hover:text-accent transition-colors text-sm"
-                >
-                  {t.fairs}
-                </Link>
-              </div>
-              <Link
-                href="/job-application"
-                className="text-left py-2 hover:text-accent transition-colors"
-              >
-                {t.jobApplication}
-              </Link>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="text-left py-2 hover:text-accent transition-colors"
-              >
-                {t.contact}
-              </button>
-              <a
-                href="http://serimakina.com/katalog/katalog.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-left py-2 hover:text-accent transition-colors"
-              >
-                {t.catalog}
-              </a>
-            </div>
-          </nav>
-        )}
       </div>
     </header>
   );

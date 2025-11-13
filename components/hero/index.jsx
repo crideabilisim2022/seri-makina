@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const translations = {
   tr: {
@@ -42,7 +43,8 @@ const sliderImages = [
   },
 ];
 
-export default function Hero({ language }) {
+export default function Hero() {
+  const { language } = useLanguage();
   const t = translations[language];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(0);

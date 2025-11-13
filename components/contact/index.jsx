@@ -2,6 +2,7 @@
 
 import { MapPin, Phone, Fan as Fax, Mail, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
 
 const translations = {
   tr: {
@@ -32,7 +33,9 @@ const translations = {
   },
 };
 
-export default function Contact({ language = "tr" }) {
+export default function Contact() {
+  const { language } = useLanguage();
+
   const t = translations[language] || translations.tr;
 
   return (

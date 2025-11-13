@@ -3,6 +3,7 @@
 import { Play } from "lucide-react";
 import { useState } from "react";
 import VideoModal from "../video-modal";
+import { useLanguage } from "@/context/LanguageContext";
 
 const translations = {
   tr: {
@@ -21,7 +22,9 @@ const translations = {
   },
 };
 
-export default function Videos({ language }) {
+export default function Videos() {
+  const { language } = useLanguage();
+
   const t = translations[language];
   const [selectedVideo, setSelectedVideo] = useState(null);
 

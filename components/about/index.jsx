@@ -3,6 +3,7 @@
 import { Factory, Award, Users, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 const translations = {
   tr: {
@@ -47,7 +48,9 @@ const translations = {
   },
 };
 
-export default function About({ language }) {
+export default function About() {
+  const { language } = useLanguage();
+
   const t = translations[language];
 
   const features = [

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
 import { Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -56,7 +57,9 @@ const recentFairs = {
   ],
 };
 
-export default function FairsPreview({ language }) {
+export default function FairsPreview() {
+  const { language } = useLanguage();
+
   const t = translations[language];
   const fairs = recentFairs[language];
 

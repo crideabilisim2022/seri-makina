@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 const translations = {
   tr: {
@@ -47,7 +48,9 @@ const translations = {
   },
 };
 
-export default function Products({ language }) {
+export default function Products() {
+  const { language } = useLanguage();
+
   const t = translations[language];
   const [activeFilter, setActiveFilter] = useState("automatic");
 

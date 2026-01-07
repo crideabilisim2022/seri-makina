@@ -83,6 +83,20 @@ export default function Contact() {
                     >
                       +00 90 212 623 21 56
                     </a>
+                    <br />{" "}
+                    <a
+                      href="tel:+902126232157"
+                      className="hover:text-accent transition"
+                    >
+                      +00 90 212 623 21 57
+                    </a>
+                    <br />{" "}
+                    <a
+                      href="tel:+902126232158"
+                      className="hover:text-accent transition"
+                    >
+                      +00 90 212 623 21 58
+                    </a>
                     <br />
                     <a
                       href="tel:+902126232425"
@@ -154,7 +168,7 @@ export default function Contact() {
                 className="w-full bg-accent hover:bg-accent/90 mt-6"
               >
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Osman+Gazi+Mahallesi+3123+Sokak+No:3/1+Kıraç+Esenyurt+Istanbul"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Osmangazi+Mahallesi+3123+Sokak+No:3/1+Kıraç+Esenyurt+İstanbul+Türkiye"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

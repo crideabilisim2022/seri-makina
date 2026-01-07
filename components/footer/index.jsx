@@ -137,6 +137,24 @@ export default function Footer({ language }) {
               <p>
                 {t.phone}:{" "}
                 <a
+                  href="tel:+902126232157"
+                  className="hover:text-accent transition"
+                >
+                  00 90 212 623 21 57
+                </a>
+              </p>
+              <p>
+                {t.phone}:{" "}
+                <a
+                  href="tel:+902126232158"
+                  className="hover:text-accent transition"
+                >
+                  00 90 212 623 21 58
+                </a>
+              </p>
+              <p>
+                {t.phone}:{" "}
+                <a
                   href="tel:+902126232425"
                   className="hover:text-accent transition"
                 >

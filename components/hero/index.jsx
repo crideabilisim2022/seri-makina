@@ -1,30 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const sliderImages = [
-  { url: "img/hero/1.jpg" },
-  { url: "img/hero/2.jpg" },
-  { url: "img/hero/3.jpg" },
-  { url: "img/hero/4.jpg" },
-  { url: "img/hero/5.jpg" },
-  { url: "img/hero/6.jpg" },
+  "/img/hero/1.jpg",
+  "/img/hero/2.jpg",
+  "/img/hero/3.jpg",
+  "/img/hero/4.jpg",
+  "/img/hero/5.jpg",
+  "/img/hero/6.jpg",
 ];
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
 
-  const nextSlide = () => {
+  const nextSlide = () =>
     setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
-  };
 
-  const prevSlide = () => {
+  const prevSlide = () =>
     setCurrentSlide(
       (prev) => (prev - 1 + sliderImages.length) % sliderImages.length
     );
-  };
 
   // Auto-play
   useEffect(() => {
@@ -32,53 +30,65 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  // Mobile swipe
+  // Swipe
   const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
+    setTouchStart(e.touches[0].clientX);
   };
 
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
+  const handleTouchEnd = (e) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
 
-  const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 75) nextSlide();
-    if (touchStart - touchEnd < -75) prevSlide();
+    if (diff > 60) nextSlide();
+    if (diff < -60) prevSlide();
+
+    setTouchStart(null);
   };
 
   return (
     <section
-      className="relative min-h-screen overflow-hidden"
+      className="relative h-[100svh] w-full overflow-hidden"
       onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Slider Images */}
-      <div className="absolute inset-0">
-        {sliderImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <img
-              src={image.url}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
-      </div>
+      {/* Slides */}
+      {sliderImages.map((src, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === currentSlide ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {/* Blur Background */}
+          <Image
+            src={src}
+            alt=""
+            fill
+            aria-hidden
+            className="object-cover blur-xl scale-110 opacity-50"
+          />
+
+          {/* Main Image */}
+          <Image
+            src={src}
+            alt={`Slide ${index + 1}`}
+            fill
+            priority={index === 0}
+            sizes="100vw"
+            className="object-contain sm:object-cover"
+          />
+        </div>
+      ))}
 
       {/* Dots */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {sliderImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-3 rounded-full transition-all ${
-              index === currentSlide ? "bg-red-600 w-8" : "bg-black/50 w-3"
+            className={`h-2 rounded-full transition-all ${
+              index === currentSlide ? "bg-red-600 w-6" : "bg-black/40 w-2"
             }`}
             aria-label={`Slide ${index + 1}`}
           />

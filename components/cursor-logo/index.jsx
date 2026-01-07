@@ -6,6 +6,7 @@ export default function CursorLogo() {
   const logoRef = useRef(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     if (window.innerWidth < 768) return;
 
     let mouseX = 0;
@@ -13,7 +14,7 @@ export default function CursorLogo() {
     let currentX = 0;
     let currentY = 0;
 
-    const speed = 0.12; // normal takip hızı
+    const speed = 0.12;
 
     const move = () => {
       currentX += (mouseX - currentX) * speed;
@@ -46,13 +47,9 @@ export default function CursorLogo() {
     <div
       ref={logoRef}
       className="pointer-events-none fixed top-0 left-0 z-[9999]
-             w-12 h-12 opacity-50 rounded-full overflow-hidden"
+                 w-12 h-12 opacity-50 rounded-full overflow-hidden"
     >
-      <img
-        src="/img/logo/logo.png"
-        alt="Cursor Logo"
-        className="w-full h-full object-contain"
-      />
+      <img src="/img/logo/logo.png" alt="Cursor Logo" />
     </div>
   );
 }

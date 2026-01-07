@@ -47,7 +47,7 @@ export default function CursorLogo() {
     <div
       ref={logoRef}
       className="pointer-events-none fixed top-0 left-0 z-[9999]
-                 w-12 h-12 opacity-50 rounded-full overflow-hidden"
+                 w-8 h-8 opacity-50 rounded-full overflow-hidden"
     >
       <img src="/img/logo/logo.png" alt="Cursor Logo" />
     </div>

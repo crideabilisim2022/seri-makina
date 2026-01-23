@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 import { Calendar, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const translations = {
@@ -30,7 +29,7 @@ export default function Fairs() {
     "Drupa",
     ...Array.from(
       { length: currentYear - 2009 + 1 },
-      (_, i) => currentYear - i
+      (_, i) => currentYear - i,
     ),
   ];
 
@@ -61,19 +60,44 @@ export default function Fairs() {
       { image: "img/fairs/drupa/23.jpeg" },
     ],
     2025: [
-      {
-        image: "packaging fair exhibition booth 2024",
-        alt: "Ambalaj Fuarı 2024",
-      },
-      {
-        image: "machinery display at trade show 2024",
-        alt: "Makina Sergisi 2024",
-      },
-      { image: "business meeting at fair 2024", alt: "Fuar Görüşmeleri 2024" },
-      {
-        image: "product demonstration at exhibition 2024",
-        alt: "Ürün Tanıtımı 2024",
-      },
+      { image: "img/fairs/2025/1.jpeg" },
+      { image: "img/fairs/2025/2.jpeg" },
+      { image: "img/fairs/2025/3.jpeg" },
+      { image: "img/fairs/2025/4.jpeg" },
+      { image: "img/fairs/2025/5.jpeg" },
+      { image: "img/fairs/2025/6.jpeg" },
+      { image: "img/fairs/2025/7.jpeg" },
+      { image: "img/fairs/2025/8.jpeg" },
+      { image: "img/fairs/2025/9.jpeg" },
+      { image: "img/fairs/2025/10.jpeg" },
+      { image: "img/fairs/2025/11.jpeg" },
+      { image: "img/fairs/2025/12.jpeg" },
+      { image: "img/fairs/2025/13.jpeg" },
+      { image: "img/fairs/2025/14.jpeg" },
+      { image: "img/fairs/2025/15.jpeg" },
+      { image: "img/fairs/2025/16.jpeg" },
+      { image: "img/fairs/2025/17.jpeg" },
+      { image: "img/fairs/2025/18.jpeg" },
+      { image: "img/fairs/2025/19.jpeg" },
+      { image: "img/fairs/2025/20.jpeg" },
+      { image: "img/fairs/2025/21.jpeg" },
+      { image: "img/fairs/2025/22.jpeg" },
+      { image: "img/fairs/2025/23.jpeg" },
+      { image: "img/fairs/2025/24.jpeg" },
+      { image: "img/fairs/2025/25.jpeg" },
+      { image: "img/fairs/2025/26.jpeg" },
+      { image: "img/fairs/2025/27.jpeg" },
+      { image: "img/fairs/2025/28.jpeg" },
+      { image: "img/fairs/2025/29.jpeg" },
+      { image: "img/fairs/2025/30.jpeg" },
+      { image: "img/fairs/2025/31.jpeg" },
+      { image: "img/fairs/2025/32.jpeg" },
+      { image: "img/fairs/2025/33.jpeg" },
+      { image: "img/fairs/2025/34.jpeg" },
+      { image: "img/fairs/2025/35.jpeg" },
+      { image: "img/fairs/2025/36.jpeg" },
+      { image: "img/fairs/2025/37.jpeg" },
+      { image: "img/fairs/2025/38.jpeg" },
     ],
     2024: [
       { image: "img/fairs/2024/1.jpeg" },
@@ -316,7 +340,7 @@ export default function Fairs() {
 
   const showPrev = () => {
     setCurrentPhotoIndex(
-      (prev) => (prev - 1 + selectedPhotos.length) % selectedPhotos.length
+      (prev) => (prev - 1 + selectedPhotos.length) % selectedPhotos.length,
     );
   };
 

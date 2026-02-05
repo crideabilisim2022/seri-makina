@@ -323,7 +323,10 @@ export default function Fairs() {
     ],
   };
 
-  const selectedPhotos = fairPhotosByYear[selectedYear] || [];
+  const selectedPhotos =
+    selectedYear === "Drupa - 2024"
+      ? fairPhotosByYear["Drupa"]
+      : fairPhotosByYear[selectedYear] || [];
 
   const openModal = (index) => {
     setCurrentPhotoIndex(index);

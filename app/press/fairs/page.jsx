@@ -19,14 +19,14 @@ const translations = {
 
 export default function Fairs() {
   const [language, setLanguage] = useState("tr");
-  const [selectedYear, setSelectedYear] = useState(2024);
+  const [selectedYear, setSelectedYear] = useState("drupa");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const t = translations[language];
 
   const currentYear = new Date().getFullYear();
   const years = [
-    "Drupa - 2024",
+    { label: "Drupa - 2024", value: "drupa" },
     ...Array.from(
       { length: currentYear - 2009 + 1 },
       (_, i) => currentYear - i,
@@ -34,7 +34,7 @@ export default function Fairs() {
   ];
 
   const fairPhotosByYear = {
-    Drupa: [
+    drupa: [
       { image: "img/fairs/drupa/1.jpeg" },
       { image: "img/fairs/drupa/2.jpeg" },
       { image: "img/fairs/drupa/3.jpeg" },
@@ -381,15 +381,15 @@ export default function Fairs() {
             <div className="flex flex-wrap gap-3 justify-center">
               {years.map((year) => (
                 <button
-                  key={year}
-                  onClick={() => setSelectedYear(year)}
+                  key={year.value}
+                  onClick={() => setSelectedYear(year.value)}
                   className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                    selectedYear === year
+                    selectedYear === year.value
                       ? "bg-accent text-accent-foreground shadow-lg scale-105"
                       : "bg-card hover:bg-card/80 text-card-foreground shadow-md hover:shadow-lg"
                   }`}
                 >
-                  {year}
+                  {year.label}
                 </button>
               ))}
             </div>

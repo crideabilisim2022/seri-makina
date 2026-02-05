@@ -27,10 +27,10 @@ export default function Fairs() {
   const currentYear = new Date().getFullYear();
   const years = [
     { label: "Drupa - 2024", value: "drupa" },
-    ...Array.from(
-      { length: currentYear - 2009 + 1 },
-      (_, i) => currentYear - i,
-    ),
+    ...Array.from({ length: currentYear - 2009 + 1 }, (_, i) => {
+      const y = currentYear - i;
+      return { label: String(y), value: y };
+    }),
   ];
 
   const fairPhotosByYear = {

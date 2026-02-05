@@ -25,13 +25,6 @@ export default function Fairs() {
   const t = translations[language];
 
   const currentYear = new Date().getFullYear();
-  const years = [
-    { label: "Drupa - 2024", value: "drupa" },
-    ...Array.from({ length: currentYear - 2009 + 1 }, (_, i) => {
-      const y = currentYear - i;
-      return { label: String(y), value: y };
-    }),
-  ];
 
   const fairPhotosByYear = {
     drupa: [
@@ -322,6 +315,17 @@ export default function Fairs() {
       { image: "img/fairs/2009/10.jpg" },
     ],
   };
+
+  const years = [
+    { label: "Drupa - 2024", value: "drupa" },
+    ...Object.keys(fairPhotosByYear)
+      .filter((key) => key !== "drupa") // drupa'yı ayrı tutuyoruz
+      .map((year) => ({
+        label: year,
+        value: Number(year),
+      }))
+      .sort((a, b) => b.value - a.value), // büyükten küçüğe
+  ];
 
   const selectedPhotos =
     selectedYear === "Drupa - 2024"

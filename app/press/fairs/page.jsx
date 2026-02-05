@@ -26,7 +26,7 @@ export default function Fairs() {
 
   const currentYear = new Date().getFullYear();
   const years = [
-    "Drupa",
+    "Drupa - 2024",
     ...Array.from(
       { length: currentYear - 2009 + 1 },
       (_, i) => currentYear - i,

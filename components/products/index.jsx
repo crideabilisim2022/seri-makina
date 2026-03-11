@@ -101,22 +101,22 @@ export default function Products() {
     },
     {
       name: t.boxFoldingGluing,
-      image: "semi automatic box folding machine",
+      image: "img/rill-cizgi-mak/2.jpg",
       slug: "box-folding",
     },
     {
       name: t.boxStitching,
-      image: "box stitching machine",
-      slug: "box-stitching",
+      image: "img/cutting/1.jpg",
+     slug: "box-stitching",
     },
     {
       name: t.twoColorPrinting,
-      image: "two color printing machine for boxes",
+      image: "img/cutting/1.jpg",
       slug: "two-color-printing",
     },
     {
       name: t.boxStitchingGluing,
-      image: "box stitching and gluing machine",
+      image: "img/cutting/1.jpg",
       slug: "box-stitching-gluing",
     },
   ];

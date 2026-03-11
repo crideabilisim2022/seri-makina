@@ -48,7 +48,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative h-[100svh] w-full overflow-hidden"
+      className="relative h-[100svh] w-full overflow-hidden mt-15"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -76,7 +76,7 @@ export default function Hero() {
             fill
             priority={index === 0}
             sizes="100vw"
-            className="object-contain sm:object-cover"
+            className="object-contain md:object-cover"
           />
         </div>
       ))}

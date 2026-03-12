@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Settings, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const translations = {
   tr: {
@@ -21,8 +22,8 @@ const translations = {
 };
 
 export default function SecondHand() {
-  const [language, setLanguage] = useState("tr");
-  const t = translations[language];
+  const { language } = useLanguage();
+  const t = translations[language] || translations.tr;
 
   const machines = [
     {

@@ -238,6 +238,40 @@ export default function Header({ language, setLanguage }) {
                         >
                           {t.boxStitching}
                         </Link>
+                        <Link
+                          href="/products?category=semi-automatic&product=channel-opening"
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                        >
+                          {t.channelOpening}
+                        </Link>
+
+                        <Link
+                          href="/products?category=semi-automatic&product=cutting-machine"
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                        >
+                          {t.cuttingMachine}
+                        </Link>
+
+                        <Link
+                          href="/products?category=semi-automatic&product=box-folding-gluing"
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                        >
+                          {t.boxFoldingGluingSemi}
+                        </Link>
+
+                        <Link
+                          href="/products?category=semi-automatic&product=two-color-printing"
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                        >
+                          {t.twoColorPrinting}
+                        </Link>
+
+                        <Link
+                          href="/products?category=semi-automatic&product=box-stitching-gluing"
+                          className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                        >
+                          {t.boxStitchingGluing}
+                        </Link>
                       </div>
                     )}
                   </div>

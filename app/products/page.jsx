@@ -2,9 +2,8 @@
 
 import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 import { Play, X } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 // --- Product Media ---
 const productsMedia = {
@@ -211,6 +210,24 @@ const productsMedia = {
         thumbnail: "/img/videos/video2.jpg",
       },
     ],
+  },
+  "box-stitching": {
+    name: "Koli Dikiş Makinası",
+    images: ["/img/cutting/1.jpg"],
+    prints: [],
+    videos: [],
+  },
+  "two-color-printing": {
+    name: "Çift Renk Baskı Makinası",
+    images: ["/img/cutting/1.jpg"],
+    prints: [],
+    videos: [],
+  },
+  "box-stitching-gluing": {
+    name: "Koli Dikiş ve Yapıştırma Makinası",
+    images: ["/img/cutting/1.jpg"],
+    prints: [],
+    videos: [],
   },
 };
 
@@ -754,6 +771,78 @@ const productSpecs = {
       { property: "width", values: ["1850 mm"] },
     ],
   },
+  "box-stitching": {
+    tr: {
+      name: "Koli Dikiş Makinası",
+      description:
+        "Karton kutular için sağlam ve hızlı dikiş imkanı sunan yarı otomatik koli dikiş makinası.",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+      },
+    },
+    en: {
+      name: "Box Stitching Machine",
+      description:
+        "Semi-automatic box stitching machine providing fast and strong stitching for cardboard boxes.",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+      },
+    },
+    specs: [
+      {
+        property: "machineModel",
+        values: ["Koli Dikiş Makinası"],
+      },
+    ],
+  },
+  "two-color-printing": {
+    tr: {
+      name: "Çift Renk Baskı Makinası",
+      description:
+        "Oluklu mukavva üzeri yüksek kaliteli baskı için tasarlanmış çift renk baskı makinası.",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+      },
+    },
+    en: {
+      name: "Two Color Printing Machine",
+      description:
+        "Two-color printing machine designed for high quality printing on corrugated cardboard.",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+      },
+    },
+    specs: [
+      {
+        property: "machineModel",
+        values: ["Çift Renk Baskı Makinası"],
+      },
+    ],
+  },
+  "box-stitching-gluing": {
+    tr: {
+      name: "Koli Dikiş ve Yapıştırma Makinası",
+      description:
+        "Dikiş ve yapıştırma işlemlerini tek hatta birleştiren, verimli üretim için tasarlanmış makina.",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+      },
+    },
+    en: {
+      name: "Box Stitching and Gluing Machine",
+      description:
+        "Machine that combines stitching and gluing operations in a single line for efficient production.",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+      },
+    },
+    specs: [
+      {
+        property: "machineModel",
+        values: ["Koli Dikiş ve Yapıştırma Makinası"],
+      },
+    ],
+  },
 };
 
 // --- Dil desteği ---
@@ -774,7 +863,7 @@ const translations = {
 
 function ProductDetailContent() {
   const searchParams = useSearchParams();
-  const [language, setLanguage] = useState("tr");
+  const { language } = useLanguage();
   const [activeTab, setActiveTab] = useState("images");
   const [modalVideo, setModalVideo] = useState(null);
 
@@ -792,7 +881,6 @@ function ProductDetailContent() {
 
   return (
     <div className="min-h-screen">
-      <Header language={language} setLanguage={setLanguage} />
       <main className="pt-32 pb-24">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">{productInfo.name}</h1>

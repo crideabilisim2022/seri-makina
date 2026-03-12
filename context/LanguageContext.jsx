@@ -8,12 +8,16 @@ export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState("tr");
 
   useEffect(() => {
-    const savedLang = localStorage.getItem("language");
-    if (savedLang) setLanguage(savedLang);
+    if (typeof window === "undefined") return;
+    const saved = window.localStorage.getItem("language");
+    if (saved && saved !== language) {
+      setLanguage(saved);
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("language", language);
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem("language", language);
   }, [language]);
 
   return (

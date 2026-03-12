@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 import { Settings, ChevronLeft, ChevronRight } from "lucide-react";
 
 const translations = {
@@ -99,7 +97,6 @@ export default function SecondHand() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Header language={language} setLanguage={setLanguage} />
       <main className="pt-32 pb-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">

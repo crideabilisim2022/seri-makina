@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import { useLanguage } from "@/context/LanguageContext";
 import { Newspaper, Calendar } from "lucide-react";
 
 const translations = {
@@ -43,8 +41,8 @@ const translations = {
 };
 
 export default function Media() {
-  const [language, setLanguage] = useState("tr");
-  const t = translations[language];
+  const { language } = useLanguage();
+  const t = translations[language] || translations.tr;
 
   const news = [
     {
@@ -69,7 +67,6 @@ export default function Media() {
 
   return (
     <div className="min-h-screen">
-      <Header language={language} setLanguage={setLanguage} />
       <main className="pt-32 pb-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">

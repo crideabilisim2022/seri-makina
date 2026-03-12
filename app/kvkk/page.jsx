@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useLanguage } from "@/context/LanguageContext";
 
 const kvkkText = {
   tr: `
@@ -186,18 +187,7 @@ Phone: +90 212 623 21 56
 };
 
 export default function KvkkPage() {
-  const [language, setLanguage] = useState("tr");
-
-  useEffect(() => {
-    const savedLang = localStorage.getItem("language");
-    if (savedLang) setLanguage(savedLang);
-  }, []);
-
-  const toggleLanguage = () => {
-    const newLang = language === "tr" ? "en" : "tr";
-    setLanguage(newLang);
-    localStorage.setItem("language", newLang);
-  };
+  const { language } = useLanguage();
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10">
@@ -208,12 +198,7 @@ export default function KvkkPage() {
             : "Clarification Text on the Protection of Personal Data"}
         </h1>
 
-        <button
-          onClick={toggleLanguage}
-          className="bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent/80 transition"
-        >
-          {language === "tr" ? "ENGLISH" : "TÜRKÇE"}
-        </button>
+        {/* Dil, sayfanın sağ üstündeki global language switcher ile değişiyor */}
       </div>
 
       <div className="whitespace-pre-wrap text-justify leading-relaxed text-gray-800 dark:text-gray-200">

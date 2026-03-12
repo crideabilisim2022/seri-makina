@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import { useLanguage } from "@/context/LanguageContext";
 import { User, Mail, Phone, FileText, Upload } from "lucide-react";
 
 const translations = {
@@ -33,9 +32,9 @@ const translations = {
 };
 
 export default function JobApplication() {
-  const [language, setLanguage] = useState("tr");
+  const { language } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
-  const t = translations[language];
+  const t = translations[language] || translations.tr;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +44,6 @@ export default function JobApplication() {
 
   return (
     <div className="min-h-screen">
-      <Header language={language} setLanguage={setLanguage} />
       <main className="pt-32 pb-24">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">

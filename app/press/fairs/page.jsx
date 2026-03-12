@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Header from "@/components/header";
+import { useLanguage } from "@/context/LanguageContext";
 import { Calendar, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const translations = {
@@ -18,7 +18,7 @@ const translations = {
 };
 
 export default function Fairs() {
-  const [language, setLanguage] = useState("tr");
+  const { language } = useLanguage();
   const [selectedYear, setSelectedYear] = useState("drupa");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
@@ -365,7 +365,6 @@ export default function Fairs() {
 
   return (
     <div className="min-h-screen">
-      <Header language={language} setLanguage={setLanguage} />
       <main className="pt-32 pb-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">

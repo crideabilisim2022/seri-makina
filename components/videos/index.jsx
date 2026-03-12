@@ -9,6 +9,7 @@ const translations = {
   tr: {
     title: "Videolar",
     subtitle: "Makinalarımızın çalışma videolarını izleyin",
+    newLabel: "Yeni",
     video1Title: "Otomatik Oluklu Mukavva Makinası",
     video2Title: "Yarı Otomatik Üretim Hattı",
     video3Title: "Kalite Kontrol Süreci",
@@ -16,6 +17,7 @@ const translations = {
   en: {
     title: "Videos",
     subtitle: "Watch our machinery in action",
+    newLabel: "New",
     video1Title: "Automatic Corrugated Cardboard Machine",
     video2Title: "Semi-Automatic Production Line",
     video3Title: "Quality Control Process",
@@ -32,7 +34,8 @@ export default function Videos() {
     {
       title: t.video1Title,
       thumbnail: "/img/videos/1.jpg",
-      videoUrl: "videos/1.mp4",
+      videoUrl: "videos/toprint/toprint-1.mp4",
+      isNew: true,
     },
     {
       title: t.video2Title,
@@ -72,6 +75,11 @@ export default function Videos() {
                     alt={video.title}
                     className="w-full h-full object-cover"
                   />
+                  {video.isNew && (
+                    <span className="absolute top-2 left-2 z-10 bg-accent text-accent-foreground text-xs font-semibold px-2 py-1 rounded-full shadow">
+                      {t.newLabel}
+                    </span>
+                  )}
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
                     <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Play

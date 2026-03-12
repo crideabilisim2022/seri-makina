@@ -140,12 +140,12 @@ export default function Header({ language, setLanguage }) {
               </button>
               {aboutOpen && (
                 <div className="absolute top-full left-0 mt-2 bg-card text-card-foreground rounded-lg shadow-lg py-2 min-w-[220px]">
-                  <button
-                    onClick={() => scrollToSection("about")}
-                    className="block w-full text-left px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                  <Link
+                    href="/about"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
                   >
                     {t.about}
-                  </button>
+                  </Link>
                   <Link
                     href="/kvkk"
                     className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"

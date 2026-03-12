@@ -3,6 +3,7 @@
 import { Factory, Award, Users, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 const translations = {
@@ -62,24 +63,36 @@ export default function About() {
 
   return (
     <section id="about" className="py-24 bg-secondary">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-            {t.title}
-          </h2>
-          <p className="text-xl text-muted-foreground mb-4 text-balance leading-relaxed">
-            {t.subtitle}
-          </p>
-          <p className="text-lg text-muted-foreground text-balance leading-relaxed">
-            {t.description}
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-6 bg-accent hover:bg-accent/90"
-          >
-            <Link href="/kvkk">{t.privacyButton}</Link>
-          </Button>
+      <div className="container mx-auto px-12">
+        <div className="max-w-5xl mx-auto mb-16 grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-center">
+          <div className="text-center lg:text-left">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+              {t.title}
+            </h2>
+            <p className="text-xl text-muted-foreground mb-4 text-balance leading-relaxed">
+              {t.subtitle}
+            </p>
+            <p className="text-lg text-muted-foreground text-balance leading-relaxed">
+              {t.description}
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="mt-6 bg-accent hover:bg-accent/90"
+            >
+              <Link href="/kvkk">{t.privacyButton}</Link>
+            </Button>
+          </div>
+          <div className="relative w-full h-auto">
+            <Image
+              src="/img/about/tasli_sunu.jpg"
+              alt="Corporate milestones"
+              width={1200}
+              height={450}
+              className="w-full h-auto rounded-xl shadow-xl object-contain"
+              priority
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">

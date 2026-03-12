@@ -852,12 +852,14 @@ const translations = {
     printImages: "Baskı Resimleri",
     machineVideos: "Makina Videoları",
     specifications: "Teknik Özellikler",
+    feature: "Özellik",
   },
   en: {
     machineImages: "Machine Images",
     printImages: "Print Images",
     machineVideos: "Machine Videos",
     specifications: "Technical Specifications",
+    feature: "Feature",
   },
 };
 
@@ -985,7 +987,7 @@ function ProductDetailContent() {
                 <thead>
                   <tr className="bg-primary text-primary-foreground">
                     <th className="px-6 py-4 text-left font-semibold">
-                      Özellik
+                      {t.feature}
                     </th>
                     {productData.specs[0].values.map((model, i) => (
                       <th

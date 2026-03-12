@@ -11,7 +11,32 @@ const translations = {
     fullName: "Ad Soyad",
     email: "E-posta",
     phone: "Telefon",
+    birthPlace: "Doğum Yeri",
+    birthDate: "Doğum Tarihi",
     position: "Başvurulan Pozisyon",
+    gender: "Cinsiyet",
+    genderOptions: {
+      select: "Seçiniz",
+      male: "Erkek",
+      female: "Kadın",
+      other: "Diğer",
+    },
+    maritalStatus: "Medeni Hali",
+    maritalStatusOptions: {
+      select: "Seçiniz",
+      single: "Bekâr",
+      married: "Evli",
+      divorced: "Boşanmış",
+    },
+    education: "Eğitim Durumu",
+    educationOptions: {
+      select: "Seçiniz",
+      highSchool: "Lise",
+      associate: "Ön Lisans",
+      bachelor: "Lisans",
+      master: "Yüksek Lisans",
+      doctorate: "Doktora",
+    },
     message: "Mesajınız",
     cv: "CV Yükle",
     submit: "Başvuruyu Gönder",
@@ -23,7 +48,32 @@ const translations = {
     fullName: "Full Name",
     email: "Email",
     phone: "Phone",
+    birthPlace: "Place of Birth",
+    birthDate: "Date of Birth",
     position: "Position Applied For",
+    gender: "Gender",
+    genderOptions: {
+      select: "Select",
+      male: "Male",
+      female: "Female",
+      other: "Other",
+    },
+    maritalStatus: "Marital Status",
+    maritalStatusOptions: {
+      select: "Select",
+      single: "Single",
+      married: "Married",
+      divorced: "Divorced",
+    },
+    education: "Education Level",
+    educationOptions: {
+      select: "Select",
+      highSchool: "High School",
+      associate: "Associate Degree",
+      bachelor: "Bachelor's Degree",
+      master: "Master's Degree",
+      doctorate: "Doctorate",
+    },
     message: "Your Message",
     cv: "Upload CV",
     submit: "Submit Application",
@@ -94,6 +144,101 @@ export default function JobApplication() {
                   required
                   className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
                 />
+              </div>
+
+              {/* Doğum Yeri */}
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                  {t.birthPlace}
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                />
+              </div>
+
+              {/* Doğum Tarihi */}
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                  {t.birthDate}
+                </label>
+                <input
+                  type="date"
+                  required
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                />
+              </div>
+
+              {/* Cinsiyet */}
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                  {t.gender}
+                </label>
+                <select
+                  required
+                  className="w-full px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    {t.genderOptions.select}
+                  </option>
+                  <option value="male">{t.genderOptions.male}</option>
+                  <option value="female">{t.genderOptions.female}</option>
+                  <option value="other">{t.genderOptions.other}</option>
+                </select>
+              </div>
+
+              {/* Medeni Hali */}
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                  {t.maritalStatus}
+                </label>
+                <select
+                  required
+                  className="w-full px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    {t.maritalStatusOptions.select}
+                  </option>
+                  <option value="single">{t.maritalStatusOptions.single}</option>
+                  <option value="married">
+                    {t.maritalStatusOptions.married}
+                  </option>
+                  <option value="divorced">
+                    {t.maritalStatusOptions.divorced}
+                  </option>
+                </select>
+              </div>
+
+              {/* Eğitim Durumu */}
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                  {t.education}
+                </label>
+                <select
+                  required
+                  className="w-full px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    {t.educationOptions.select}
+                  </option>
+                  <option value="highSchool">
+                    {t.educationOptions.highSchool}
+                  </option>
+                  <option value="associate">
+                    {t.educationOptions.associate}
+                  </option>
+                  <option value="bachelor">
+                    {t.educationOptions.bachelor}
+                  </option>
+                  <option value="master">{t.educationOptions.master}</option>
+                  <option value="doctorate">
+                    {t.educationOptions.doctorate}
+                  </option>
+                </select>
               </div>
 
               <div>

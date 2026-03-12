@@ -21,7 +21,7 @@ export default function Hero() {
 
   const prevSlide = () =>
     setCurrentSlide(
-      (prev) => (prev - 1 + sliderImages.length) % sliderImages.length
+      (prev) => (prev - 1 + sliderImages.length) % sliderImages.length,
     );
 
   // Auto-play
@@ -48,7 +48,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative h-[100svh] w-full overflow-hidden mt-15"
+      className="relative h-[140svh] w-full overflow-hidden mt-15"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -56,27 +56,27 @@ export default function Hero() {
       {sliderImages.map((src, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
+          className={`absolute inset-0 transition-opacity duration-1000 h-full w-full ${
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* Blur Background */}
-          <Image
-            src={src}
-            alt=""
-            fill
-            aria-hidden
-            className="object-cover blur-xl scale-110 opacity-50"
-          />
-
           {/* Main Image */}
+          {index === 0 && (
+            <Image
+              src={src}
+              alt={`Slide ${index + 1}`}
+              fill
+              priority={index === 0}
+              className="object-cover object-top h-full w-full"
+            />
+          )}
+
           <Image
             src={src}
             alt={`Slide ${index + 1}`}
             fill
             priority={index === 0}
-            sizes="100vw"
-            className="object-contain md:object-cover"
+            className="object-cover object-center h-full w-full"
           />
         </div>
       ))}

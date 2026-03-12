@@ -246,14 +246,14 @@ export default function Header({ language, setLanguage }) {
                         </Link>
 
                         <Link
-                          href="/products?category=semi-automatic&product=cutting-machine"
+                          href="/products?category=semi-automatic&product=cutting"
                           className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.cuttingMachine}
                         </Link>
 
                         <Link
-                          href="/products?category=semi-automatic&product=box-folding-gluing"
+                          href="/products?category=semi-automatic&product=box-folding"
                           className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                         >
                           {t.boxFoldingGluingSemi}

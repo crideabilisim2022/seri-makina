@@ -39,13 +39,13 @@ export default function Videos() {
     },
     {
       title: t.video2Title,
-      thumbnail: "/cardboard-manufacturing-equipment.jpg",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      thumbnail: "/img/videos/1.jpg",
+      videoUrl: "videos/toprint/toprint-2.mp4",
     },
     {
       title: t.video3Title,
-      thumbnail: "/quality-control-industrial-process.jpg",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      thumbnail: "/img/videos/1.jpg",
+      videoUrl: "videos/toprint/toprint-3.mp4",
     },
   ];
 

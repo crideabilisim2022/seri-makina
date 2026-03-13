@@ -33,20 +33,20 @@ export default function Videos() {
   const videos = [
     {
       title: t.video1Title,
-      thumbnail: "/img/videos/9.jpg",
+      thumbnail: "/img/videos/9.JPG",
       videoUrl: "videos/toprint/toprint-1.mp4",
       isNew: true,
     },
     {
       title: t.video2Title,
-      thumbnail: "/img/videos/10.jpg",
+      thumbnail: "/img/videos/10.JPG",
       videoUrl: "videos/toprint/toprint-2.mp4",
       isNew: true,
 
     },
     {
       title: t.video3Title,
-      thumbnail: "/img/videos/11.jpg",
+      thumbnail: "/img/videos/11.JPG",
       videoUrl: "videos/toprint/toprint-3.mp4",
       isNew: true,
 

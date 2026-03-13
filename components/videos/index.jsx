@@ -10,17 +10,17 @@ const translations = {
     title: "Videolar",
     subtitle: "Makinalarımızın çalışma videolarını izleyin",
     newLabel: "Yeni",
-    video1Title: "Otomatik Oluklu Mukavva Makinası",
-    video2Title: "Yarı Otomatik Üretim Hattı",
-    video3Title: "Kalite Kontrol Süreci",
+    video1Title: "Toprint Machine",
+    video2Title: "Toprint Machine",
+    video3Title: "Toprint Machine",
   },
   en: {
     title: "Videos",
     subtitle: "Watch our machinery in action",
     newLabel: "New",
-    video1Title: "Automatic Corrugated Cardboard Machine",
-    video2Title: "Semi-Automatic Production Line",
-    video3Title: "Quality Control Process",
+    video1Title: "Toprint Machine",
+    video2Title: "Toprint Machine",
+    video3Title: "Toprint Machine",
   },
 };
 
@@ -33,18 +33,18 @@ export default function Videos() {
   const videos = [
     {
       title: t.video1Title,
-      thumbnail: "/img/videos/1.jpg",
+      thumbnail: "/img/videos/9.jpg",
       videoUrl: "videos/toprint/toprint-1.mp4",
       isNew: true,
     },
     {
       title: t.video2Title,
-      thumbnail: "/img/videos/1.jpg",
+      thumbnail: "/img/videos/10.jpg",
       videoUrl: "videos/toprint/toprint-2.mp4",
     },
     {
       title: t.video3Title,
-      thumbnail: "/img/videos/1.jpg",
+      thumbnail: "/img/videos/11.jpg",
       videoUrl: "videos/toprint/toprint-3.mp4",
     },
   ];

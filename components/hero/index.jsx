@@ -48,7 +48,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative h-[140svh] w-full overflow-hidden mt-15"
+      className="relative  h-[50vh] sm:h-[90vh] lg:h-[150svh] w-full overflow-hidden mt-15"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >

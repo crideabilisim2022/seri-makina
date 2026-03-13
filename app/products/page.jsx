@@ -22,18 +22,22 @@ const productsMedia = {
       {
         src: "/videos/800/black-serial1.mp4",
         thumbnail: "/videos/800/video1.jpg",
+        isNew: true,
       },
       {
         src: "/videos/800/black-serial2.mp4",
         thumbnail: "/videos/800/video2.jpg",
+        isNew: true,
       },
         {
         src: "/videos/1020/black-serial-1020-1.mp4",
         thumbnail: "/videos/1020/video1.jpg",
+        isNew: true,
       },
         {
         src: "/videos/1020/black-serial-1020-2.mp4",
         thumbnail: "/videos/1020/video2.jpg",
+        isNew: true,
       },
           {
         src: "/videos/1020/black-serial-1020-1.mp4",
@@ -94,10 +98,24 @@ const productsMedia = {
       {
         src: "/videos/800/black-serial1.mp4",
         thumbnail: "videos/800/video1.jpg",
+        isNew: true,
       },
       {
         src: "/videos/800/black-serial2.mp4",
         thumbnail: "videos/800/video2.jpg",
+        isNew: true,
+      },
+        {
+        src: "/videos/1.mp4",
+        thumbnail: "img/videos/4.jpg",
+      },
+        {
+        src: "/videos/800/black-serial2.mp4",
+        thumbnail: "img/videos/5.jpg",
+      },
+        {
+        src: "/videos/800/black-serial2.mp4",
+        thumbnail: "img/videos/6.jpg",
       },
     ],
   },
@@ -119,8 +137,8 @@ const productsMedia = {
     ],
     videos: [
       {
-        src: "/videos/mini-inline/1.mp4",
-        thumbnail: "/img/mini-inline/video1.jpg",
+        src: "/videos/11.mp4",
+        thumbnail: "/img/videos/7.jpg",
       },
     ],
   },
@@ -173,7 +191,7 @@ const productsMedia = {
     videos: [
       {
         src: "/videos/12.mp4",
-        thumbnail: "/img/kutu-katlama/video1.jpg",
+        thumbnail: "/img/videos/3.jpg",
       },
     ],
   },
@@ -184,7 +202,7 @@ const productsMedia = {
     videos: [
       {
         src: "/videos/13.mp4",
-        thumbnail: "/img/videos/video2.jpg",
+        thumbnail: "/img/videos/1.jpg",
       },
     ],
   },
@@ -207,25 +225,25 @@ const productsMedia = {
     videos: [
       {
         src: "/videos/14.mp4",
-        thumbnail: "/img/videos/video2.jpg",
+        thumbnail: "/img/videos/2.jpg",
       },
     ],
   },
   "box-stitching": {
     name: "Koli Dikiş Makinası",
-    images: ["/img/cutting/1.jpg"],
+    images: ["/img/koli-dikis/1.jpg"],
     prints: [],
     videos: [],
   },
   "two-color-printing": {
     name: "Çift Renk Baskı Makinası",
-    images: ["/img/cutting/1.jpg"],
+    images: ["/img/cift-renk/1.jpg"],
     prints: [],
     videos: [],
   },
   "box-stitching-gluing": {
     name: "Koli Dikiş ve Yapıştırma Makinası",
-    images: ["/img/cutting/1.jpg"],
+    images: ["/img/koli-dikis-yapistirma/1.jpg"],
     prints: [],
     videos: [],
   },
@@ -238,6 +256,7 @@ const productSpecs = {
       name: "Sloter & İnline Makinası",
       description:
         "Yüksek hızlı ve hassas kesim için tasarlanmış tam otomatik sloter makinası. Oluklu mukavva üretiminde mükemmel performans sunar.",
+         newLabel:"Yeni",
       propertyLabels: {
         machineModel: "MAKİNA MODELİ",
         serialWork: "Seri Çalışma (mm)",
@@ -264,6 +283,7 @@ const productSpecs = {
       name: "Slotter & Inline Machine",
       description:
         "Fully automatic slotter machine designed for high-speed and precise cutting. Excellent performance in corrugated cardboard production.",
+         newLabel:"New",
       propertyLabels: {
         machineModel: "MACHINE MODEL",
         serialWork: "Serial Work (mm)",
@@ -386,6 +406,7 @@ const productSpecs = {
   "jumbo-sloter": {
     tr: {
       name: "Jumbo Sloter Makinası",
+      newLabel:"Yeni",
       description:
         "Büyük boy oluklu mukavva üretimleri için yüksek kapasiteli sloter makinası.",
       propertyLabels: {
@@ -412,6 +433,7 @@ const productSpecs = {
       name: "Jumbo Sloter Machine",
       description:
         "High-capacity slotter machine designed for large-size corrugated cardboard production.",
+        newLabel:"New",
       propertyLabels: {
         machineModel: "MACHINE MODEL",
         maxCardboardWidth: "Maximum Cardboard Width",
@@ -771,78 +793,126 @@ const productSpecs = {
       { property: "width", values: ["1850 mm"] },
     ],
   },
-  "box-stitching": {
-    tr: {
-      name: "Koli Dikiş Makinası",
-      description:
-        "Karton kutular için sağlam ve hızlı dikiş imkanı sunan yarı otomatik koli dikiş makinası.",
-      propertyLabels: {
-        machineModel: "MAKİNA MODELİ",
-      },
+ "box-stitching": {
+  tr: {
+    name: "US 1300 Yarı Otomatik Koli Dikiş Makinası",
+    description:
+      "Karton kutular için sağlam ve hızlı dikiş imkanı sunan yarı otomatik koli dikiş makinası.",
+    propertyLabels: {
+      machineModel: "MAKİNA MODELİ",
+      machineWidth: "Makine Genişliği",
+      machineLength: "Makine Uzunluğu",
+      machineHeight: "Makine Yüksekliği",
+      minCartonSize: "Minimum Karton Boyutu",
+      maxCardboardSize: "Maksimum Mukavva Boyutu",
+      capacity: "Kapasite",
     },
-    en: {
-      name: "Box Stitching Machine",
-      description:
-        "Semi-automatic box stitching machine providing fast and strong stitching for cardboard boxes.",
-      propertyLabels: {
-        machineModel: "MACHINE MODEL",
-      },
-    },
-    specs: [
-      {
-        property: "machineModel",
-        values: ["Koli Dikiş Makinası"],
-      },
-    ],
   },
-  "two-color-printing": {
-    tr: {
-      name: "Çift Renk Baskı Makinası",
-      description:
-        "Oluklu mukavva üzeri yüksek kaliteli baskı için tasarlanmış çift renk baskı makinası.",
-      propertyLabels: {
-        machineModel: "MAKİNA MODELİ",
-      },
+  en: {
+    name: "US 1300 Semi-Automatic Box Stitching Machine",
+    description:
+      "Semi-automatic box stitching machine providing fast and strong stitching for cardboard boxes.",
+    propertyLabels: {
+      machineModel: "MACHINE MODEL",
+      machineWidth: "Machine Width",
+      machineLength: "Machine Length",
+      machineHeight: "Machine Height",
+      minCartonSize: "Minimum Carton Size",
+      maxCardboardSize: "Maximum Cardboard Size",
+      capacity: "Capacity",
     },
-    en: {
-      name: "Two Color Printing Machine",
-      description:
-        "Two-color printing machine designed for high quality printing on corrugated cardboard.",
-      propertyLabels: {
-        machineModel: "MACHINE MODEL",
-      },
-    },
-    specs: [
-      {
-        property: "machineModel",
-        values: ["Çift Renk Baskı Makinası"],
-      },
-    ],
   },
-  "box-stitching-gluing": {
-    tr: {
-      name: "Koli Dikiş ve Yapıştırma Makinası",
-      description:
-        "Dikiş ve yapıştırma işlemlerini tek hatta birleştiren, verimli üretim için tasarlanmış makina.",
-      propertyLabels: {
-        machineModel: "MAKİNA MODELİ",
-      },
+  specs: [
+    { property: "machineModel", values: ["TEKNİK ÖZELLİKLERİ"] },
+
+    { property: "machineWidth", values: ["2750 mm"] },
+    { property: "machineLength", values: ["3000 mm"] },
+    { property: "machineHeight", values: ["1900 mm"] },
+    { property: "minCartonSize", values: ["30 cm"] },
+    { property: "maxCardboardSize", values: ["380 cm"] },
+    { property: "capacity", values: ["1000 - 1500 adet / saat"] },
+  ],
+},
+ "two-color-printing": {
+  tr: {
+    name: "CS 1500 Yarı Otomatik Çift Renk Baskı Makinası",
+    description:
+      "Oluklu mukavva üzeri yüksek kaliteli baskı için tasarlanmış çift renk baskı makinası.",
+    propertyLabels: {
+      machineModel: "MAKİNA MODELİ",
+      maxCardboardSize: "Maksimum Mukavva Boyutu",
+      minCardboardSize: "Minimum Mukavva Boyutu",
+      printSize: "Baskı Boyutu",
+      clichéThickness: "Klişe Kalınlığı",
+      capacity: "Kapasite",
+      mainPower: "Ana Güç",
     },
-    en: {
-      name: "Box Stitching and Gluing Machine",
-      description:
-        "Machine that combines stitching and gluing operations in a single line for efficient production.",
-      propertyLabels: {
-        machineModel: "MACHINE MODEL",
-      },
-    },
-    specs: [
-      {
-        property: "machineModel",
-        values: ["Koli Dikiş ve Yapıştırma Makinası"],
-      },
-    ],
   },
+  en: {
+    name: "CS 1500 Semi-Automatic Two Color Printing Machine",
+    description:
+      "Two-color printing machine designed for high quality printing on corrugated cardboard.",
+    propertyLabels: {
+      machineModel: "MACHINE MODEL",
+      maxCardboardSize: "Maximum Cardboard Size",
+      minCardboardSize: "Minimum Cardboard Size",
+      printSize: "Printing Size",
+      clichéThickness: "Plate Thickness",
+      capacity: "Capacity",
+      mainPower: "Main Power",
+    },
+  },
+  specs: [
+    { property: "machineModel", values: ["TEKNİK ÖZELLİKLERİ"] },
+
+    { property: "maxCardboardSize", values: ["1400 x 1900 mm"] },
+    { property: "minCardboardSize", values: ["200 x 400 mm"] },
+    { property: "printSize", values: ["1100 x 1900 mm"] },
+    { property: "clichéThickness", values: ["5,50 mm"] },
+    { property: "capacity", values: ["1500 adet / saat"] },
+    { property: "mainPower", values: ["2,2 KW"] },
+  ],
+},
+"box-stitching-gluing": {
+  tr: {
+    name: "US1300 Yarı Otomatik Paketleme Dikiş ve Yapıştırma Makinası",
+    description:
+      "Dikiş ve yapıştırma işlemlerini tek hatta birleştiren, verimli üretim için tasarlanmış makina.",
+    propertyLabels: {
+      machineModel: "MAKİNA MODELİ",
+      machineWidth: "Makina Eni",
+      machineLength: "Makina Boyu",
+      machineHeight: "Makine Yüksekliği",
+      minCardboardSize: "Minimum Mukavva Ebatı",
+      maxCardboardSize: "Maksimum Mukavva Ebatı",
+      capacity: "Kapasite",
+    },
+  },
+  en: {
+    name: "US1300 Semi-Automatic Packaging Stitching and Gluing Machine",
+    description:
+      "Machine that combines stitching and gluing operations in a single line for efficient production.",
+    propertyLabels: {
+      machineModel: "MACHINE MODEL",
+      machineWidth: "Machine Width",
+      machineLength: "Machine Length",
+      machineHeight: "Machine Height",
+      minCardboardSize: "Minimum Cardboard Size",
+      maxCardboardSize: "Maximum Cardboard Size",
+      capacity: "Capacity",
+    },
+  },
+  specs: [
+    { property: "machineModel", values: ["TEKNİK ÖZELLİKLERİ"] },
+
+    { property: "machineWidth", values: ["3500 mm"] },
+    { property: "machineLength", values: ["5000 mm"] },
+    { property: "machineHeight", values: ["1900 mm"] },
+    { property: "minCardboardSize", values: ["30 cm"] },
+    { property: "maxCardboardSize", values: ["300 mm"] },
+    { property: "capacity", values: ["1000 - 1500 adet / saat"] },
+  ],
+},
 };
 
 // --- Dil desteği ---
@@ -853,6 +923,7 @@ const translations = {
     machineVideos: "Makina Videoları",
     specifications: "Teknik Özellikler",
     feature: "Özellik",
+    newLabel:"Yeni"
   },
   en: {
     machineImages: "Machine Images",
@@ -860,6 +931,7 @@ const translations = {
     machineVideos: "Machine Videos",
     specifications: "Technical Specifications",
     feature: "Feature",
+     newLabel:"New"
   },
 };
 
@@ -947,8 +1019,21 @@ function ProductDetailContent() {
                     className="w-full h-full object-cover"
                     alt={`Video ${i + 1}`}
                   />
+                    {video.isNew && (
+                    <span className="absolute top-2 left-2 z-10 bg-accent text-accent-foreground text-xs font-semibold px-2 py-1 rounded-full shadow">
+                      {t.newLabel}
+                    </span>
+                  )}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <Play size={48} className="text-white/50" />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                    <div className="w-13 h-13 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play
+                        className="text-accent-foreground ml-1"
+                        size={16}
+                        fill="currentColor"
+                      />
+                    </div>
+                  </div>
                   </div>
                 </div>
               ))}

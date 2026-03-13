@@ -106,17 +106,17 @@ export default function Products() {
     },
     {
       name: t.boxStitching,
-      image: "img/cutting/1.jpg",
+      image: "img/koli-dikis/1.jpg",
      slug: "box-stitching",
     },
     {
       name: t.twoColorPrinting,
-      image: "img/cutting/1.jpg",
+      image: "img/cift-renk/1.jpg",
       slug: "two-color-printing",
     },
     {
       name: t.boxStitchingGluing,
-      image: "img/cutting/1.jpg",
+      image: "img/koli-dikis-yapistirma/1.jpg",
       slug: "box-stitching-gluing",
     },
   ];

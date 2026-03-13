@@ -190,7 +190,7 @@ export default function About() {
       onClick={(e) => e.stopPropagation()} // modal içi tıklamayı engelle
     >
       <button
-        className="absolute top-2 right-2 text-black text-4xl font-bold z-20"
+        className="absolute top-3 right-5 text-black text-4xl font-bold z-20"
         onClick={() => setSelected(null)}
       >
         ×
@@ -198,8 +198,8 @@ export default function About() {
       <Image
         src={selected}
         alt="Sertifika Büyük"
-        width={300}
-        height={200}
+        width={400}
+        height={300}
         className="w-full h-full object-cover rounded-lg"
       />
     </div>

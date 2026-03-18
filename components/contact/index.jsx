@@ -163,19 +163,19 @@ export default function Contact() {
               </div>
 
               {/* Yol Tarifi Butonu */}
-              <Button
-                asChild
-                className="w-full bg-accent hover:bg-accent/90 mt-6"
-              >
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=Osmangazi+Mahallesi+3123+Sokak+No:3/1+Kıraç+Esenyurt+İstanbul+Türkiye"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MapPin className="mr-2" size={18} />
-                  {t.getDirections}
-                </a>
-              </Button>
+           <Button
+  asChild
+  className="w-full bg-accent hover:bg-accent/90 mt-6"
+>
+  <a
+    href="https://www.google.com/maps/dir/?api=1&destination=41.054546,28.635093"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <MapPin className="mr-2" size={18} />
+    {t.getDirections}
+  </a>
+</Button>
             </div>
           </div>
 

@@ -10,9 +10,9 @@ const translations = {
     title: "Videolar",
     subtitle: "Makinalarımızın çalışma videolarını izleyin",
     newLabel: "Yeni",
-    video1Title: "Seri & Toprint Machine",
-    video2Title: "Seri & Toprint Machine",
-    video3Title: "Seri & Toprint Machine",
+    video1Title: "Seri & Toprint Makina",
+    video2Title: "Seri & Toprint Makina",
+    video3Title: "Seri & Bosphorus Makina",
   },
   en: {
     title: "Videos",
@@ -20,7 +20,7 @@ const translations = {
     newLabel: "New",
     video1Title: "Seri & Toprint Machine",
     video2Title: "Seri & Toprint Machine",
-    video3Title: "Seri & Toprint Machine",
+    video3Title: "Seri & Bosphorus Machine",
   },
 };
 
@@ -46,8 +46,8 @@ export default function Videos() {
     },
     {
       title: t.video3Title,
-      thumbnail: "/img/videos/11.JPG",
-      videoUrl: "videos/toprint/toprint-3.mp4",
+      thumbnail: "/img/bosphorus/img1.JPG",
+      videoUrl: "videos/bosphorus/Bosphorus-1.mp4",
       isNew: true,
 
     },

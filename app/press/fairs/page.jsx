@@ -158,7 +158,7 @@ export default function Fairs() {
       { image: "img/fairs/2022/3.jpeg" },
       { image: "img/fairs/2022/4.jpeg" },
       { image: "img/fairs/2022/5.jpeg" },
-      { image: "img/fairs/2022/6.jpeg" },
+      // { image: "img/fairs/2022/6.jpeg" },
       { image: "img/fairs/2022/7.jpeg" },
       { image: "img/fairs/2022/8.jpeg" },
       { image: "img/fairs/2022/9.jpeg" },

@@ -101,7 +101,7 @@ export default function Products() {
     },
     {
       name: t.boxFoldingGluing,
-      image: "img/rill-cizgi-mak/2.jpg",
+      image: "img/kutu-katlama/1.jpg",
       slug: "box-folding",
     },
     {

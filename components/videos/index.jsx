@@ -10,17 +10,17 @@ const translations = {
     title: "Videolar",
     subtitle: "Makinalarımızın çalışma videolarını izleyin",
     newLabel: "Yeni",
-    video1Title: "Toprint Machine",
-    video2Title: "Toprint Machine",
-    video3Title: "Toprint Machine",
+    video1Title: "Seri & Toprint Machine",
+    video2Title: "Seri & Toprint Machine",
+    video3Title: "Seri & Toprint Machine",
   },
   en: {
     title: "Videos",
     subtitle: "Watch our machinery in action",
     newLabel: "New",
-    video1Title: "Toprint Machine",
-    video2Title: "Toprint Machine",
-    video3Title: "Toprint Machine",
+    video1Title: "Seri & Toprint Machine",
+    video2Title: "Seri & Toprint Machine",
+    video3Title: "Seri & Toprint Machine",
   },
 };
 

@@ -109,20 +109,14 @@ const productsMedia = {
         src: "/videos/1.mp4",
         thumbnail: "img/videos/4.jpg",
       },
-        {
-        src: "/videos/800/black-serial2.mp4",
-        thumbnail: "img/videos/5.jpg",
-      },
-        {
-        src: "/videos/800/black-serial2.mp4",
-        thumbnail: "img/videos/6.jpg",
-      },
+        
+        
     ],
   },
 
   "mini-inline": {
     name: "Mini İnline Makinası",
-    images: ["/img/mini-inline/1.jpg", "/img/mini-inline/2.jpg"],
+    images: ["/img/mini-inline/1.jpg", ],
     prints: [
       "/img/mini-inline/baski/1.jpg",
       "/img/mini-inline/baski/2.jpg",
@@ -197,7 +191,7 @@ const productsMedia = {
   },
   grooving: {
     name: "Jumbo Sloter Makinası",
-    images: ["/img/rill-cizgi-mak/1.jpg", "/img/rill-cizgi-mak/2.jpg"],
+    images: [, "/img/rill-cizgi-mak/2.jpg"],
     prints: [],
     videos: [
       {
@@ -220,7 +214,7 @@ const productsMedia = {
   },
   cutting: {
     name: "Kesim Makinası (Vargel)",
-    images: ["/img/cutting/1.jpg", "img/cutting/2.jpg"],
+    images: ["/img/cutting/1.jpg", ],
     prints: [],
     videos: [
       {

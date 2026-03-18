@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CursorLogo() {
   const logoRef = useRef(null);
+  const [trail, setTrail] = useState([]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -27,6 +28,12 @@ export default function CursorLogo() {
         `;
       }
 
+      // 🦋 trail ekleme
+      setTrail((prev) => {
+        const newTrail = [...prev, { x: currentX, y: currentY }];
+        return newTrail.slice(-10); // kaç tane kelebek olacak
+      });
+
       requestAnimationFrame(move);
     };
 
@@ -44,12 +51,30 @@ export default function CursorLogo() {
   }, []);
 
   return (
-    <div
-      ref={logoRef}
-      className="pointer-events-none fixed top-0 left-0 z-[9999]
-                 w-8 h-8 opacity-50 rounded-full overflow-hidden"
-    >
-      <img src="/img/logo/logo.png" alt="Cursor Logo" />
-    </div>
+    <>
+      {/* 🦋 KELEBEK TRAIL */}
+      {trail.map((item, i) => (
+        <img
+          key={i}
+          src="/img/logo/logo.png" // 👉 buraya kelebek görseli koy
+          className="pointer-events-none fixed z-[9998] w-5 h-5 opacity-70"
+          style={{
+            left: item.x,
+            top: item.y,
+            transform: `translate(-50%, -50%) scale(${i / trail.length})`,
+            filter: "blur(0.5px)",
+          }}
+        />
+      ))}
+
+      {/* 🎯 ANA LOGO (AYNI KALDI) */}
+      <div
+        ref={logoRef}
+        className="pointer-events-none fixed top-0 left-0 z-[9999]
+                   w-8 h-8 opacity-70 rounded-full overflow-hidden"
+      >
+        <img src="/img/logo/logo.png" alt="Cursor Logo" />
+      </div>
+    </>
   );
 }

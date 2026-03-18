@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const sliderImages = [
-  "/img/hero/7.jpeg",
+  "/img/hero/8.JPG",
   "/img/hero/2.jpg",
   "/img/hero/3.jpg",
-  "/img/hero/4.jpg",
-  "/img/hero/5.jpg",
-  "/img/hero/6.jpg",
+  "/img/jumbo-sloter/5.jpeg",
+  "/img/hero/jumbo-hero1.png",
+  "/img/hero/jumbo-hero2.png",
 ];
 
 export default function Hero() {

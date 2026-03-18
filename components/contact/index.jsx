@@ -163,19 +163,19 @@ export default function Contact() {
               </div>
 
               {/* Yol Tarifi Butonu */}
-           <Button
-  asChild
-  className="w-full bg-accent hover:bg-accent/90 mt-6"
->
-  <a
-    href="https://www.google.com/maps/dir/?api=1&destination=41.054546,28.635093"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <MapPin className="mr-2" size={18} />
-    {t.getDirections}
-  </a>
-</Button>
+              <Button
+                asChild
+                className="w-full bg-accent hover:bg-accent/90 mt-6"
+              >
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=41.054546,28.635093"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="mr-2" size={18} />
+                  {t.getDirections}
+                </a>
+              </Button>
             </div>
           </div>
 
@@ -192,6 +192,25 @@ export default function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
+        {false && (
+  <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg">
+    <iframe
+      src="https://www.google.com/maps?q=41.054546,28.635093&z=18&output=embed&t=k"
+      className="w-full h-full border-0"
+      loading="lazy"
+      allowFullScreen
+    ></iframe>
+
+    <a
+      href="https://www.google.com/maps/dir/?api=1&destination=41.054546,28.635093"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="absolute right-4 bottom-4 bg-accent text-white px-4 py-2 rounded-xl shadow-lg hover:bg-accent/90 transition flex items-center gap-2"
+    >
+      🧭 Yol Tarifi Başlat
+    </a>
+  </div>
+)}
         </div>
       </div>
     </section>

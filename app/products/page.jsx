@@ -261,7 +261,7 @@ const productsMedia = {
        videos: [
       {
         src: "/videos/ks1300.mp4",
-        thumbnail: "/img/videos/3.jpg",
+        thumbnail: "/img/ks1300.JPG",
       },
     ],
     
@@ -290,13 +290,13 @@ const productsMedia = {
        videos: [
       {
         src: "/videos/us1300.mp4",
-        thumbnail: "/img/videos/3.jpg",
+        thumbnail: "/img/us1300.JPG",
       },
     ],
   },
   "two-color-printing": {
     name: "Çift Renk Baskı Makinası",
-    images: ["/img/cift-renk/1.jpg"],
+    images: ["/img/cs1500.JPG"],
     prints: [],
        videos: [
       {

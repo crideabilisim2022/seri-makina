@@ -1086,54 +1086,66 @@ useEffect(() => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {activeTab === "images" &&
               media.images.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`${media.name} ${i + 1}`}
-                  onClick={() => setModalImageIndex(i)}
-                  className="w-full h-64 object-contain rounded-lg shadow-lg"
-                />
+                <div key={i}>
+                  <img
+                    src={src}
+                    alt={`${media.name} ${i + 1}`}
+                    onClick={() => setModalImageIndex(i)}
+                    className="w-full h-64 object-contain rounded-lg shadow-lg cursor-pointer"
+                  />
+                  <p className="text-center mt-2 text-sm font-medium text-muted-foreground">
+                    {i + 1}
+                  </p>
+                </div>
               ))}
 
             {activeTab === "prints" &&
               media.prints.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`Print ${i + 1}`}
-                  onClick={() => setModalImageIndex(media.images.length + i)}
-                  className="w-full h-64 object-contain rounded-lg shadow-lg"
-                />
+                <div key={i}>
+                  <img
+                    src={src}
+                    alt={`Print ${i + 1}`}
+                    onClick={() => setModalImageIndex(media.images.length + i)}
+                    className="w-full h-64 object-contain rounded-lg shadow-lg cursor-pointer"
+                  />
+                  <p className="text-center mt-2 text-sm font-medium text-muted-foreground">
+                    {i + 1}
+                  </p>
+                </div>
               ))}
 
             {activeTab === "videos" &&
               media.videos.map((video, i) => (
-                <div
-                  key={i}
-                  className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-lg cursor-pointer"
-                  onClick={() => setModalVideo(video.src)}
-                >
-                  <img
-                    src={video.thumbnail}
-                    className="w-full h-full object-cover"
-                    alt={`Video ${i + 1}`}
-                  />
-                  {video.isNew && (
-                    <span className="absolute top-2 left-2 z-10 bg-accent text-accent-foreground text-xs font-semibold px-2 py-1 rounded-full shadow">
-                      {t.newLabel}
-                    </span>
-                  )}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
-                      <div className="w-13 h-13 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play
-                          className="text-accent-foreground ml-1"
-                          size={16}
-                          fill="currentColor"
-                        />
+                <div key={i}>
+                  <div
+                    className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onClick={() => setModalVideo(video.src)}
+                  >
+                    <img
+                      src={video.thumbnail}
+                      className="w-full h-full object-cover"
+                      alt={`Video ${i + 1}`}
+                    />
+                    {video.isNew && (
+                      <span className="absolute top-2 left-2 z-10 bg-accent text-accent-foreground text-xs font-semibold px-2 py-1 rounded-full shadow">
+                        {t.newLabel}
+                      </span>
+                    )}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                        <div className="w-13 h-13 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Play
+                            className="text-accent-foreground ml-1"
+                            size={16}
+                            fill="currentColor"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <p className="text-center mt-2 text-sm font-medium text-muted-foreground">
+                    {i + 1}
+                  </p>
                 </div>
               ))}
           </div>

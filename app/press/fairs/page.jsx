@@ -19,15 +19,15 @@ const translations = {
 
 export default function Fairs() {
   const { language } = useLanguage();
-  const [selectedYear, setSelectedYear] = useState("drupa");
+  const [selectedAlbumId, setSelectedAlbumId] = useState("drupa-2024");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const t = translations[language];
-
-  const currentYear = new Date().getFullYear();
-
-  const fairPhotosByYear = {
-    drupa: [
+  const fairAlbums = [
+    {
+      fair: "drupa",
+      year: 2024,
+      photos: [
       { image: "img/fairs/drupa/1.jpeg" },
       { image: "img/fairs/drupa/2.jpeg" },
       { image: "img/fairs/drupa/3.jpeg" },
@@ -52,7 +52,11 @@ export default function Fairs() {
       { image: "img/fairs/drupa/22.jpeg" },
       { image: "img/fairs/drupa/23.jpeg" },
     ],
-    2025: [
+    },
+    {
+      fair: "avrasya",
+      year: 2025,
+      photos: [
       { image: "img/fairs/2025/1.jpeg" },
       { image: "img/fairs/2025/2.jpeg" },
       { image: "img/fairs/2025/3.jpeg" },
@@ -92,7 +96,11 @@ export default function Fairs() {
       { image: "img/fairs/2025/37.jpeg" },
       { image: "img/fairs/2025/38.jpeg" },
     ],
-    2024: [
+    },
+    {
+      fair: "avrasya",
+      year: 2024,
+      photos: [
       { image: "img/fairs/2024/1.jpeg" },
       { image: "img/fairs/2024/2.jpeg" },
       { image: "img/fairs/2024/3.jpeg" },
@@ -130,7 +138,11 @@ export default function Fairs() {
       { image: "img/fairs/2024/35.jpeg" },
       { image: "img/fairs/2024/36.jpeg" },
     ],
-    2023: [
+    },
+    {
+      fair: "avrasya",
+      year: 2023,
+      photos: [
       { image: "img/fairs/2023/1.jpeg" },
       { image: "img/fairs/2023/2.jpeg" },
       { image: "img/fairs/2023/3.jpeg" },
@@ -152,7 +164,11 @@ export default function Fairs() {
       { image: "img/fairs/2023/19.jpeg" },
       { image: "img/fairs/2023/20.jpeg" },
     ],
-    2022: [
+    },
+    {
+      fair: "avrasya",
+      year: 2022,
+      photos: [
       { image: "img/fairs/2022/1.jpeg" },
       { image: "img/fairs/2022/2.jpeg" },
       { image: "img/fairs/2022/3.jpeg" },
@@ -165,7 +181,11 @@ export default function Fairs() {
       { image: "img/fairs/2022/10.jpeg" },
       { image: "img/fairs/2022/11.jpeg" },
     ],
-    2021: [
+    },
+    {
+      fair: "avrasya",
+      year: 2021,
+      photos: [
       { image: "img/fairs/2021/1.jpg" },
       { image: "img/fairs/2021/2.jpg" },
       { image: "img/fairs/2021/3.jpg" },
@@ -180,13 +200,17 @@ export default function Fairs() {
       { image: "img/fairs/2021/12.jpg" },
       { image: "img/fairs/2021/13.jpg" },
     ],
+    },
     // 2020: [
     //   { image: "industrial expo 2020", alt: "Endüstriyel Expo 2020" },
     //   { image: "machinery fair 2020", alt: "Makina Fuarı 2020" },
     //   { image: "business conference 2020", alt: "İş Konferansı 2020" },
     // ],
 
-    2019: [
+    {
+      fair: "avrasya",
+      year: 2019,
+      photos: [
       { image: "img/fairs/2019/1.jpg" },
       { image: "img/fairs/2019/2.jpg" },
       { image: "img/fairs/2019/3.jpg" },
@@ -199,7 +223,11 @@ export default function Fairs() {
       { image: "img/fairs/2019/10.jpg" },
       { image: "img/fairs/2019/11.jpg" },
     ],
-    2018: [
+    },
+    {
+      fair: "avrasya",
+      year: 2018,
+      photos: [
       { image: "img/fairs/2018/1.jpg" },
       { image: "img/fairs/2018/2.jpg" },
       { image: "img/fairs/2018/3.jpg" },
@@ -208,7 +236,11 @@ export default function Fairs() {
       { image: "img/fairs/2018/6.jpg" },
       { image: "img/fairs/2018/7.jpg" },
     ],
-    2017: [
+    },
+    {
+      fair: "avrasya",
+      year: 2017,
+      photos: [
       { image: "img/fairs/2017/1.jpg" },
       { image: "img/fairs/2017/2.jpg" },
       { image: "img/fairs/2017/3.jpg" },
@@ -220,7 +252,11 @@ export default function Fairs() {
       { image: "img/fairs/2017/9.jpg" },
       { image: "img/fairs/2017/10.jpg" },
     ],
-    2016: [
+    },
+    {
+      fair: "avrasya",
+      year: 2016,
+      photos: [
       { image: "img/fairs/2016/1.jpg" },
       { image: "img/fairs/2016/2.jpg" },
       { image: "img/fairs/2016/3.jpg" },
@@ -232,14 +268,22 @@ export default function Fairs() {
       { image: "img/fairs/2016/9.jpg" },
       { image: "img/fairs/2016/10.jpg" },
     ],
-    2015: [
+    },
+    {
+      fair: "avrasya",
+      year: 2015,
+      photos: [
       { image: "img/fairs/2015/1.jpg" },
       { image: "img/fairs/2015/2.jpg" },
       { image: "img/fairs/2015/3.jpg" },
       { image: "img/fairs/2015/4.jpg" },
       { image: "img/fairs/2015/5.jpg" },
     ],
-    2014: [
+    },
+    {
+      fair: "avrasya",
+      year: 2014,
+      photos: [
       { image: "img/fairs/2014/1.jpg" },
       { image: "img/fairs/2014/2.jpg" },
       { image: "img/fairs/2014/3.jpg" },
@@ -248,7 +292,11 @@ export default function Fairs() {
       { image: "img/fairs/2014/6.jpg" },
       { image: "img/fairs/2014/7.jpg" },
     ],
-    2013: [
+    },
+    {
+      fair: "avrasya",
+      year: 2013,
+      photos: [
       { image: "img/fairs/2013/1.jpg" },
       { image: "img/fairs/2013/2.jpg" },
       { image: "img/fairs/2013/3.jpg" },
@@ -265,7 +313,11 @@ export default function Fairs() {
       { image: "img/fairs/2013/14.jpg" },
       { image: "img/fairs/2013/15.jpg" },
     ],
-    2012: [
+    },
+    {
+      fair: "avrasya",
+      year: 2012,
+      photos: [
       { image: "img/fairs/2012/1.jpg" },
       { image: "img/fairs/2012/2.jpg" },
       { image: "img/fairs/2012/3.jpg" },
@@ -278,7 +330,11 @@ export default function Fairs() {
       { image: "img/fairs/2012/10.jpg" },
       { image: "img/fairs/2012/11.jpg" },
     ],
-    2011: [
+    },
+    {
+      fair: "avrasya",
+      year: 2011,
+      photos: [
       { image: "img/fairs/2011/1.jpg" },
       { image: "img/fairs/2011/2.jpg" },
       { image: "img/fairs/2011/3.jpg" },
@@ -290,7 +346,11 @@ export default function Fairs() {
       { image: "img/fairs/2011/9.jpg" },
       { image: "img/fairs/2011/10.jpg" },
     ],
-    2010: [
+    },
+    {
+      fair: "avrasya",
+      year: 2010,
+      photos: [
       { image: "img/fairs/2010/1.jpg" },
       { image: "img/fairs/2010/2.jpg" },
       { image: "img/fairs/2010/3.jpg" },
@@ -302,7 +362,11 @@ export default function Fairs() {
       { image: "img/fairs/2010/9.jpg" },
       { image: "img/fairs/2010/10.jpg" },
     ],
-    2009: [
+    },
+    {
+      fair: "avrasya",
+      year: 2009,
+      photos: [
       { image: "img/fairs/2009/1.jpg" },
       { image: "img/fairs/2009/2.jpg" },
       { image: "img/fairs/2009/3.jpg" },
@@ -314,23 +378,22 @@ export default function Fairs() {
       { image: "img/fairs/2009/9.jpg" },
       { image: "img/fairs/2009/10.jpg" },
     ],
-  };
-
-  const years = [
-    { label: "Drupa - 2024", value: "drupa" },
-    ...Object.keys(fairPhotosByYear)
-      .filter((key) => key !== "drupa") // drupa'yı ayrı tutuyoruz
-      .map((year) => ({
-        label: year,
-        value: Number(year),
-      }))
-      .sort((a, b) => b.value - a.value), // büyükten küçüğe
+    },
   ];
 
-  const selectedPhotos =
-    selectedYear === "Drupa - 2024"
-      ? fairPhotosByYear["Drupa"]
-      : fairPhotosByYear[selectedYear] || [];
+  const groupedYears = {
+    drupa: fairAlbums
+      .filter((album) => album.fair === "drupa")
+      .sort((a, b) => b.year - a.year),
+    avrasya: fairAlbums
+      .filter((album) => album.fair === "avrasya")
+      .sort((a, b) => b.year - a.year),
+  };
+
+  const selectedAlbum =
+    fairAlbums.find((album) => `${album.fair}-${album.year}` === selectedAlbumId) ||
+    fairAlbums[0];
+  const selectedPhotos = selectedAlbum?.photos || [];
 
   const openModal = (index) => {
     setCurrentPhotoIndex(index);
@@ -380,24 +443,46 @@ export default function Fairs() {
           </div>
 
           {/* Yıl Seçimi */}
-          <div className="max-w-6xl mx-auto mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-center">
-              {t.selectYear}
-            </h2>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {years.map((year) => (
-                <button
-                  key={year.value}
-                  onClick={() => setSelectedYear(year.value)}
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                    selectedYear === year.value
-                      ? "bg-accent text-accent-foreground shadow-lg scale-105"
-                      : "bg-card hover:bg-card/80 text-card-foreground shadow-md hover:shadow-lg"
-                  }`}
-                >
-                  {year.label}
-                </button>
-              ))}
+          <div className="max-w-6xl mb-12">
+            <div className="flex flex-wrap items-center justify-start gap-8 px-12">
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="text-xl font-semibold">Drupa</h3>
+                {groupedYears.drupa.map((album) => {
+                  const albumId = `${album.fair}-${album.year}`;
+                  return (
+                    <button
+                      key={albumId}
+                      onClick={() => setSelectedAlbumId(albumId)}
+                      className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                        selectedAlbumId === albumId
+                          ? "bg-accent text-accent-foreground shadow-lg scale-105"
+                          : "bg-card hover:bg-card/80 text-card-foreground shadow-md hover:shadow-lg"
+                      }`}
+                    >
+                      {album.year}
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="text-xl font-semibold">Avrasya</h3>
+                {groupedYears.avrasya.map((album) => {
+                  const albumId = `${album.fair}-${album.year}`;
+                  return (
+                    <button
+                      key={albumId}
+                      onClick={() => setSelectedAlbumId(albumId)}
+                      className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                        selectedAlbumId === albumId
+                          ? "bg-accent text-accent-foreground shadow-lg scale-105"
+                          : "bg-card hover:bg-card/80 text-card-foreground shadow-md hover:shadow-lg"
+                      }`}
+                    >
+                      {album.year}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -406,11 +491,11 @@ export default function Fairs() {
             {selectedPhotos.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {selectedPhotos.map((photo, index) => (
-                  <div
-                    key={index}
-                    className="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-                    onClick={() => openModal(index)}
-                  >
+                  <div key={index} className="group">
+                    <div
+                      className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+                      onClick={() => openModal(index)}
+                    >
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
                         src={`/${photo.image}`}
@@ -418,6 +503,10 @@ export default function Fairs() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
+                    </div>
+                    <p className="text-center mt-2 text-sm font-medium text-muted-foreground">
+                      {index + 1}
+                    </p>
                   </div>
                 ))}
               </div>

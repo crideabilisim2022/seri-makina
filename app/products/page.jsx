@@ -1,0 +1,1268 @@
+"use client";
+
+import { useState, Suspense, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { Play, X } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+// --- Product Media ---
+const productsMedia = {
+ sloter: {
+  name: "Sloter & İnline Makinası",
+
+  images: [
+    "/img/slotter/1.jpg",
+    "/img/slotter/2.jpg",
+    "/img/slotter/3.jpg",
+    "/img/slotter/4.jpg",
+    "/img/slotter/5.jpg",
+    "/img/slotter/6.jpg",
+    "/img/slotter/7.jpg",
+    "/img/slotter/8.jpg",
+    "/img/slotter/9.jpg",
+    "/img/slotter/10.jpg",
+    "/img/slotter/11.jpg",
+    "/img/slotter/12.jpg",
+    "/img/slotter/13.jpg",
+    "/img/slotter/14.jpg",
+    "/img/slotter/15.jpg",
+    "/img/slotter/16.jpg",
+    "/img/slotter/17.jpg",
+    "/img/slotter/18.jpg",
+    "/img/slotter/19.jpg",
+    "/img/slotter/20.jpg",
+  ],
+
+  prints: ["/img/jumbo-sloter/baski/11.jpeg",
+      "/img/jumbo-sloter/baski/12.jpeg",
+      "/img/jumbo-sloter/baski/13.jpeg",
+      "/img/jumbo-sloter/baski/14.jpeg",
+      "/img/jumbo-sloter/baski/15.jpeg",
+      "/img/jumbo-sloter/baski/16.jpeg",
+      "/img/jumbo-sloter/baski/17.jpeg",
+    "/img/slotter/baski/9.jpeg",
+
+    "/img/slotter/baski/1.jpg",
+    "/img/slotter/baski/2.jpg",
+    "/img/slotter/baski/3.jpg",
+    "/img/slotter/baski/4.jpg",
+    "/img/slotter/baski/5.jpg",
+    "/img/slotter/baski/6.jpg",
+    "/img/slotter/baski/7.jpg",
+    "/img/slotter/baski/8.jpg",
+  ],
+
+  videos: [
+    // {
+    //   src: "/videos/800/black-serial1.mp4",
+    //   thumbnail: "/videos/800/video1.jpg",
+    //   isNew: true,
+    // },
+    // {
+    //   src: "/videos/800/black-serial2.mp4",
+    //   thumbnail: "/videos/800/video2.jpg",
+    //   isNew: true,
+    // },
+    // {
+    //   src: "/videos/1020/black-serial-1020-1.mp4",
+    //   thumbnail: "/videos/1020/video1.jpg",
+    //   isNew: true,
+    // },
+    {
+      src: "/videos/1020/black-serial-1020-2.mp4",
+      thumbnail: "/videos/1020/video2.jpg",
+      isNew: true,
+    },
+      {
+      src: "/videos/sloter/1.mp4",
+      thumbnail: "/videos/sloter/6.JPG",
+      isNew: true,
+    },
+    
+    // {
+    //   src: "/videos/1020/black-serial-1020-1.mp4",
+    //   thumbnail: "/videos/1020/video1.jpg",
+    // },
+    {
+      src: "/videos/1290/black-serial-1290-1.mp4",
+      thumbnail: "/videos/1290/video1.jpg",
+    },
+    {
+      src: "/videos/1290/black-serial-1290-2.mp4",
+      thumbnail: "/videos/1290/video2.jpg",
+    },
+    // {
+    //   src: "/videos/1290/black-serial-1290-3.mp4",
+    //   thumbnail: "/videos/1290/video3.jpg",
+    // },
+    {
+      src: "/videos/1290/black-serial-1290-4.mp4",
+      thumbnail: "/videos/1290/video4.jpg",
+    },
+    {
+      src: "/videos/1337/black-serial-1337-1.mp4",
+      thumbnail: "/videos/1337/video1.jpg",
+    },
+  ],
+},
+  "jumbo-sloter": {
+    name: "Jumbo Sloter Makinası",
+    images: [
+      "/img/jumbo-sloter/12.jpeg",
+      "/img/jumbo-sloter/13.jpeg",
+      "/img/jumbo-sloter/14.jpeg",
+      "/img/jumbo-sloter/15.jpeg",
+      "/img/jumbo-sloter/16.jpeg",
+      "/img/jumbo-sloter/17.jpeg",
+    ],
+    prints: [
+      // "/img/jumbo-sloter/baski/1.jpg",
+      // "/img/jumbo-sloter/baski/2.jpg",
+      // "/img/jumbo-sloter/baski/3.jpg",
+      // "/img/jumbo-sloter/baski/4.jpg",
+      // "/img/jumbo-sloter/baski/5.jpg",
+      // "/img/jumbo-sloter/baski/6.jpg",
+      // "/img/jumbo-sloter/baski/7.jpg",
+      // "/img/jumbo-sloter/baski/8.jpg",
+      // "/img/jumbo-sloter/baski/9.jpg",
+      // "/img/jumbo-sloter/baski/10.jpg",
+      "/img/jumbo-sloter/baski/11.jpeg",
+      "/img/jumbo-sloter/baski/12.jpeg",
+      "/img/jumbo-sloter/baski/13.jpeg",
+      "/img/jumbo-sloter/baski/14.jpeg",
+      "/img/jumbo-sloter/baski/15.jpeg",
+      "/img/jumbo-sloter/baski/16.jpeg",
+      "/img/jumbo-sloter/baski/17.jpeg",
+    ],
+    videos: [
+      // {
+      //   src: "/videos/800/black-serial1.mp4",
+      //   thumbnail: "videos/800/video1.jpg",
+      //   isNew: true,
+      // },
+      // {
+      //   src: "/videos/800/black-serial2.mp4",
+      //   thumbnail: "videos/800/video2.jpg",
+      //   isNew: true,
+      // },
+      //   {
+      //   src: "/videos/1.mp4",
+      //   thumbnail: "img/videos/4.jpg",
+      // },
+          {
+      src: "/videos/jumbo/1.mp4",
+      thumbnail: "/videos/jumbo/1.JPG",
+      isNew: true,
+    },  {
+      src: "/videos/jumbo/2.mp4",
+      thumbnail: "/videos/jumbo/2.JPG",
+      isNew: true,
+    },  {
+      src: "/videos/jumbo/3.mp4",
+      thumbnail: "/videos/jumbo/3.JPG",
+      isNew: true,
+    },  {
+      src: "/videos/jumbo/4.mp4",
+      thumbnail: "/videos/jumbo/4.JPG",
+      
+    },  
+    ],
+  },
+
+  "mini-inline": {
+    name: "Mini İnline Makinası",
+    images: ["/img/mini-inline/1.jpg", ],
+    prints: [
+      "/img/mini-inline/baski/1.jpg",
+      "/img/mini-inline/baski/2.jpg",
+      "/img/mini-inline/baski/3.jpg",
+      // "/img/mini-inline/baski/4.jpg",
+      // "/img/mini-inline/baski/5.jpg",
+      "/img/mini-inline/baski/6.jpg",
+      "/img/mini-inline/baski/7.jpg",
+      "/img/mini-inline/baski/8.jpg",
+      "/img/mini-inline/baski/9.jpg",
+      "/img/mini-inline/baski/10.jpg",
+    ],
+    videos: [
+      {
+        src: "/videos/11.mp4",
+        thumbnail: "/img/videos/7.jpg",
+      },
+    ],
+  },
+  "box-folding": {
+    tr: {
+      name: "Kutu Katlama ve Yapıştırma Makinası",
+      description:
+        "Yüksek hızlı, elektronik sistemli kutu katlama ve yapıştırma makinası.",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+        maxCardboardWidth: "Maksimum Mukavva Genişliği",
+        minCardboardWidth: "Minimum Mukavva Genişliği",
+        capacity: "Kapasite (m/dk)",
+        gluingSystem: "Yapıştırma Sistemi",
+        countingAndSeparationSystem: "Sayma ve Ayırma Sistemi",
+      },
+    },
+    en: {
+      name: "Box Folding and Gluing Machine",
+      description:
+        "High-speed box folding and gluing machine with electronic counting and separation system.",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+        maxCardboardWidth: "Maximum Cardboard Width",
+        minCardboardWidth: "Minimum Cardboard Width",
+        capacity: "Capacity (m/min)",
+        gluingSystem: "Gluing System",
+        countingAndSeparationSystem: "Counting and Separation System",
+      },
+    },
+    specs: [
+      {
+        property: "machineModel",
+        values: ["Kutu Katlama ve Yapıştırma Makinası"],
+      },
+      { property: "maxCardboardWidth", values: ["1300×2800 mm"] },
+      { property: "minCardboardWidth", values: ["300×600 mm"] },
+      { property: "capacity", values: ["120 m/dk"] },
+      {
+        property: "gluingSystem",
+        values: ["Alt üst kulak yapıştırma sistemi"],
+      },
+      {
+        property: "countingAndSeparationSystem",
+        values: ["Elektronik Sistem ile"],
+      },
+    ],
+    images: ["/img/kutu-katlama/1.jpg", "/img/kutu-katlama/2.jpg"],
+    prints: [],
+    videos: [
+      {
+        src: "/videos/12.mp4",
+        thumbnail: "/img/videos/3.jpg",
+      },
+    ],
+  },
+  grooving: {
+    name: "Jumbo Sloter Makinası",
+    images: [, "/img/rill-cizgi-mak/2.jpg"],
+    prints: [],
+    videos: [
+      {
+        src: "/videos/13.mp4",
+        thumbnail: "/img/videos/1.jpg",
+      },
+    ],
+  },
+  "manual-stitching": {
+    name: "KS 1300 Yarı Otomatik Dikiş Makinası",
+    images: ["/img/manuel-dikis/1.jpg", "/img/manuel-dikis/2.png"],
+    prints: [],
+       videos: [
+      {
+        src: "/videos/ks1300.mp4",
+        thumbnail: "/img/videos/3.jpg",
+      },
+    ],
+    
+  },
+  "channel-opening": {
+    name: "MS SEMI OTOMATİK YIKAMA MAKİNASI",
+    images: ["/img/kanal-acma/1.jpg"],
+    prints: [],
+    videos: [],
+  },
+  cutting: {
+    name: "Kesim Makinası (Vargel)",
+    images: ["/img/cutting/1.jpg", ],
+    prints: [],
+    videos: [
+      {
+        src: "/videos/14.mp4",
+        thumbnail: "/img/videos/2.jpg",
+      },
+    ],
+  },
+  "box-stitching": {
+    name: "Koli Dikiş Makinası",
+    images: ["/img/koli-dikis/1.jpg"],
+    prints: [],
+       videos: [
+      {
+        src: "/videos/us1300.mp4",
+        thumbnail: "/img/videos/3.jpg",
+      },
+    ],
+  },
+  "two-color-printing": {
+    name: "Çift Renk Baskı Makinası",
+    images: ["/img/cift-renk/1.jpg"],
+    prints: [],
+       videos: [
+      {
+        src: "/videos/cs1500.mp4",
+        thumbnail: "/img/videos/3.jpg",
+      },
+    ],
+  },
+  "box-stitching-gluing": {
+    name: "Koli Dikiş ve Yapıştırma Makinası",
+    images: ["/img/koli-dikis-yapistirma/1.jpg"],
+    prints: [],
+    videos: [],
+  },
+};
+
+// --- Product Specs with TR/EN property labels ---
+const productSpecs = {
+  sloter: {
+    tr: {
+      name: "Sloter & İnline Makinası",
+      description:
+        "Yüksek hızlı ve hassas kesim için tasarlanmış tam otomatik sloter makinası. Oluklu mukavva üretiminde mükemmel performans sunar.",
+         newLabel:"Yeni",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+        serialWork: "Seri Çalışma (mm)",
+        jumpWork: "Atlamalı Çalışma (mm)",
+        minCardboardWidth: "Minimum Karton Genişliği (mm)",
+        maxPrintArea: "Maksimum Baskı Alanı (mm)",
+        channelWidth: "Kanal Genişliği (mm)",
+        clicheThickness: "Klişe Kalınlığı (mm)",
+        maxCardboardThickness: "Maksimum Karton Kalınlığı (mm)",
+        minCardboardThickness: "Minimum Karton Kalınlığı (mm)",
+        capacity: "Kapasite (adet/saat)",
+        maxRotaryCutArea: "Maksimum Rotary Kesim Alanı (mm)",
+        feederFanMotorPower: "Besleyici Fan Motor Gücü (kw)",
+        minKnifeCombination: "Minimum Bıçak Birleştirme (mm)",
+        cutterRubberThickness: "Kesici Lastik Kalınlığı (mm)",
+        printRollerDiameter: "Baskı Merdane Çapı (mm)",
+        clichePrintRollerDiameter: "Klişeli Baskı Merdane Çapı (mm)",
+        rotaryDieRollerDiameter: "Rotary Kalıp Merdanesi Çapı (mm)",
+        rotaryRubberRollerDiameter: "Rotary Lastik Merdanesi Çapı (mm)",
+        mainMotorPower: "Ana Motor Gücü (kw)",
+      },
+    },
+    en: {
+      name: "Slotter & Inline Machine",
+      description:
+        "Fully automatic slotter machine designed for high-speed and precise cutting. Excellent performance in corrugated cardboard production.",
+         newLabel:"New",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+        serialWork: "Serial Work (mm)",
+        jumpWork: "Jump Work (mm)",
+        minCardboardWidth: "Minimum Cardboard Width (mm)",
+        maxPrintArea: "Maximum Print Area (mm)",
+        channelWidth: "Channel Width (mm)",
+        clicheThickness: "Cliche Thickness (mm)",
+        maxCardboardThickness: "Maximum Cardboard Thickness (mm)",
+        minCardboardThickness: "Minimum Cardboard Thickness (mm)",
+        capacity: "Capacity (pcs/hour)",
+        maxRotaryCutArea: "Maximum Rotary Cut Area (mm)",
+        feederFanMotorPower: "Feeder Fan Motor Power (kw)",
+        minKnifeCombination: "Minimum Knife Combination (mm)",
+        cutterRubberThickness: "Cutter Rubber Thickness (mm)",
+        printRollerDiameter: "Print Roller Diameter (mm)",
+        clichePrintRollerDiameter: "Cliche Print Roller Diameter (mm)",
+        rotaryDieRollerDiameter: "Rotary Die Roller Diameter (mm)",
+        rotaryRubberRollerDiameter: "Rotary Rubber Roller Diameter (mm)",
+        mainMotorPower: "Main Motor Power (kw)",
+      },
+    },
+    specs: [
+      {
+        property: "machineModel",
+        values: [
+          "SM/V 800",
+          "SM/V 1020",
+          "SM/V 1290",
+          "SM/V 1337",
+          "SM/V 1520",
+        ],
+      },
+      {
+        property: "serialWork",
+        values: [
+          "800×2200",
+          "1020×2400",
+          "1290×2600",
+          "1337×2800",
+          "1520×3000",
+        ],
+      },
+      {
+        property: "jumpWork",
+        values: [
+          "1140×2200",
+          "1400×2400",
+          "1550×2600",
+          "1650×2800",
+          "1770×3000",
+        ],
+      },
+      {
+        property: "minCardboardWidth",
+        values: ["270×700", "300×700", "350×750", "400×750", "350×700"],
+      },
+      {
+        property: "maxPrintArea",
+        values: [
+          "800×2000",
+          "1020×2150",
+          "1290×2350",
+          "1337×2550",
+          "1520×2750",
+        ],
+      },
+      { property: "channelWidth", values: ["9", "9", "9", "9", "9"] },
+      {
+        property: "clicheThickness",
+        values: ["3,9", "3,9", "3,9", "3,9", "3,94"],
+      },
+      {
+        property: "maxCardboardThickness",
+        values: ["10", "10", "10", "10", "10"],
+      },
+      {
+        property: "minCardboardThickness",
+        values: ["1,5", "1,5", "1,5", "1,5", "1,5"],
+      },
+      {
+        property: "capacity",
+        values: ["7500", "7000", "6000", "4000", "4000"],
+      },
+      {
+        property: "maxRotaryCutArea",
+        values: ["750×2100", "920×2300", "1240×2500", "1280×2700", "1475×2800"],
+      },
+      {
+        property: "feederFanMotorPower",
+        values: ["5,5", "5,5", "7,5", "7,5", "7,5"],
+      },
+      {
+        property: "minKnifeCombination",
+        values: ["130", "130", "130", "130", "130"],
+      },
+      {
+        property: "cutterRubberThickness",
+        values: ["10", "10", "10", "10", "10"],
+      },
+      {
+        property: "printRollerDiameter",
+        values: ["247", "318", "399", "418", "477"],
+      },
+      {
+        property: "clichePrintRollerDiameter",
+        values: ["255", "326", "407", "426", "485"],
+      },
+      {
+        property: "rotaryDieRollerDiameter",
+        values: ["210", "281", "360", "381", "440"],
+      },
+      {
+        property: "rotaryRubberRollerDiameter",
+        values: ["231", "295", "295", "401", "401"],
+      },
+      { property: "mainMotorPower", values: ["11", "11", "15", "15", "22"] },
+    ],
+  },
+  "jumbo-sloter": {
+    tr: {
+      name: "Jumbo Sloter Makinası",
+      newLabel:"Yeni",
+      description:
+        "Büyük boy oluklu mukavva üretimleri için yüksek kapasiteli sloter makinası.",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+        maxCardboardWidth: "Maksimum Karton Genişliği",
+        serialOperation: "Seri Çalışma (mm)",
+        skipOperation: "Atlamalı Çalışma (mm)",
+        minCardboardWidth: "Minimum Karton Genişliği (mm)",
+        maxPrintArea: "Maksimum Baskı Alanı (mm)",
+        channelWidth: "Kanal Genişliği (mm)",
+        clichéThickness: "Klişe Kalınlığı (mm)",
+        maxCardboardThickness: "Maksimum Karton Kalınlığı (mm)",
+        capacity: "Kapasite (saat başına)",
+        maxRotaryCutArea: "Maksimum Rotary Kesim Alanı (mm)",
+        cutterRubberThickness: "Kesici Lastik Kalınlığı (mm)",
+        printRollerDiameter: "Baskı Merdane Çapı (mm)",
+        clichéRollerDiameter: "Klişeli Baskı Merdane Çapı (mm)",
+        rotaryDieRollerDiameter: "Rotary Kalıp Merdanesi Çapı (mm)",
+        rotaryRubberRollerDiameter: "Rotary Lastik Merdanesi Çapı (mm)",
+        mainMotorPower: "Ana Motor Gücü (kw)",
+      },
+    },
+    en: {
+      name: "Jumbo Sloter Machine",
+      description:
+        "High-capacity slotter machine designed for large-size corrugated cardboard production.",
+        newLabel:"New",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+        maxCardboardWidth: "Maximum Cardboard Width",
+        serialOperation: "Serial Operation (mm)",
+        skipOperation: "Skip Operation (mm)",
+        minCardboardWidth: "Minimum Cardboard Width (mm)",
+        maxPrintArea: "Maximum Print Area (mm)",
+        channelWidth: "Channel Width (mm)",
+        clichéThickness: "Cliché Thickness (mm)",
+        maxCardboardThickness: "Maximum Cardboard Thickness (mm)",
+        capacity: "Capacity (per hour)",
+        maxRotaryCutArea: "Maximum Rotary Cut Area (mm)",
+        cutterRubberThickness: "Cutter Rubber Thickness (mm)",
+        printRollerDiameter: "Print Roller Diameter (mm)",
+        clichéRollerDiameter: "Cliché Roller Diameter (mm)",
+        rotaryDieRollerDiameter: "Rotary Die Roller Diameter (mm)",
+        rotaryRubberRollerDiameter: "Rotary Rubber Roller Diameter (mm)",
+        mainMotorPower: "Main Motor Power (kw)",
+      },
+    },
+    specs: [
+      {
+        property: "machineModel",
+        values: ["SM/V 1670", "SM/V 1800", "SM/V 2350"],
+      },
+      {
+        property: "serialOperation",
+        values: ["1670×3500", "1800×4000", "2350×4500"],
+      },
+      {
+        property: "skipOperation",
+        values: ["2150×3500", "2050×4000", "-"],
+      },
+      {
+        property: "minCardboardWidth",
+        values: ["750×1000", "600×750", "750×1000"],
+      },
+      {
+        property: "maxPrintArea",
+        values: ["1670×3200", "1800×3600", "2350×4100"],
+      },
+      {
+        property: "channelWidth",
+        values: ["9", "9", "9"],
+      },
+      {
+        property: "clichéThickness",
+        values: ["3.9", "3.94", "3.9"],
+      },
+      {
+        property: "maxCardboardThickness",
+        values: ["10", "10", "10"],
+      },
+      {
+        property: "capacity",
+        values: ["2500", "2500", "2500"],
+      },
+      {
+        property: "maxRotaryCutArea",
+        values: ["1600×3200", "1475×3800", "2200×4200"],
+      },
+      {
+        property: "cutterRubberThickness",
+        values: ["10", "10", "10"],
+      },
+      {
+        property: "printRollerDiameter",
+        values: ["522", "572", "742"],
+      },
+      {
+        property: "clichéRollerDiameter",
+        values: ["530", "580", "750"],
+      },
+      {
+        property: "rotaryDieRollerDiameter",
+        values: ["485", "535", "705"],
+      },
+      {
+        property: "rotaryRubberRollerDiameter",
+        values: ["401", "401", "401"],
+      },
+      {
+        property: "mainMotorPower",
+        values: ["22", "22", "30"],
+      },
+    ],
+  },
+
+  "mini-inline": {
+    tr: {
+      name: "Mini İnline Makinası",
+      description:
+        "Yüksek hassasiyetli baskı ve kesim işlemleri için tasarlanmış profesyonel oluklu mukavva makinası.",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+        maxCardboardWidth: "Maksimum Karton Genişliği",
+        serialOperation: "Seri Çalışma (mm)",
+        skipOperation: "Atlamalı Çalışma (mm)",
+        minCardboardWidth: "Minimum Karton Genişliği (mm)",
+        maxPrintingArea: "Maksimum Baskı Alanı (mm)",
+        channelWidth: "Kanal Genişliği (mm)",
+        clichéThickness: "Klişe Kalınlığı (mm)",
+        maxCardboardThickness: "Maksimum Karton Kalınlığı (mm)",
+        minCardboardThickness: "Minimum Karton Kalınlığı (mm)",
+        capacity: "Kapasite (adet/saat)",
+        feederFanMotorPower: "Besleyici Fan Motor Gücü (kw)",
+        minKnifeJoin: "Minimum Bıçak Birleştirme (mm)",
+        maxRotaryCuttingArea: "Maksimum Rotary Kesim Alanı (mm)",
+        cuttingRubberThickness: "Kesici Lastik Kalınlığı (mm)",
+        printingRollDiameter: "Baskı Merdane Çapı (mm)",
+        clichéPrintingRollDiameter: "Klişeli Baskı Merdane Çapı (mm)",
+        rotaryDieRollDiameter: "Rotary Kalıp Merdanesi Çapı (mm)",
+        rotaryRubberRollDiameter: "Rotary Lastik Merdanesi Çapı (mm)",
+        mainMotorPower: "Ana Motor Gücü (kw)",
+      },
+    },
+    en: {
+      name: "Mini Inline Machine",
+      description:
+        "High-precision corrugated cardboard machine designed for advanced printing and rotary die-cutting operations.",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+        maxCardboardWidth: "Maximum Cardboard Width",
+        serialOperation: "Serial Operation (mm)",
+        skipOperation: "Skip Operation (mm)",
+        minCardboardWidth: "Minimum Cardboard Width (mm)",
+        maxPrintingArea: "Maximum Printing Area (mm)",
+        channelWidth: "Channel Width (mm)",
+        clichéThickness: "Cliché Thickness (mm)",
+        maxCardboardThickness: "Maximum Cardboard Thickness (mm)",
+        minCardboardThickness: "Minimum Cardboard Thickness (mm)",
+        capacity: "Capacity (pcs/hour)",
+        feederFanMotorPower: "Feeder Fan Motor Power (kw)",
+        minKnifeJoin: "Minimum Knife Joint (mm)",
+        maxRotaryCuttingArea: "Maximum Rotary Cutting Area (mm)",
+        cuttingRubberThickness: "Cutting Rubber Thickness (mm)",
+        printingRollDiameter: "Printing Roll Diameter (mm)",
+        clichéPrintingRollDiameter: "Printing Roll Diameter with Cliché (mm)",
+        rotaryDieRollDiameter: "Rotary Die Roll Diameter (mm)",
+        rotaryRubberRollDiameter: "Rotary Rubber Roll Diameter (mm)",
+        mainMotorPower: "Main Motor Power (kw)",
+      },
+    },
+    specs: [
+      { property: "machineModel", values: ["SM/V 630"] },
+      { property: "maxCardboardWidth", values: ["630×2000"] },
+      { property: "serialOperation", values: ["630×2000"] },
+      { property: "skipOperation", values: ["720×2000"] },
+      { property: "minCardboardWidth", values: ["180×600"] },
+      { property: "maxPrintingArea", values: ["630×1750"] },
+      { property: "channelWidth", values: ["9"] },
+      { property: "clichéThickness", values: ["3.94"] },
+      { property: "maxCardboardThickness", values: ["10"] },
+      { property: "minCardboardThickness", values: ["1.5"] },
+      { property: "capacity", values: ["12000"] },
+      { property: "feederFanMotorPower", values: ["4"] },
+      { property: "minKnifeJoin", values: ["100"] },
+      { property: "maxRotaryCuttingArea", values: ["580×1900"] },
+      { property: "cuttingRubberThickness", values: ["9"] },
+      { property: "printingRollDiameter", values: ["195"] },
+      { property: "clichéPrintingRollDiameter", values: ["203"] },
+      { property: "rotaryDieRollDiameter", values: ["158"] },
+      { property: "rotaryRubberRollDiameter", values: ["210"] },
+      { property: "mainMotorPower", values: ["11/15"] },
+    ],
+  },
+
+  "box-folding": {
+    tr: {
+      name: "Kutu Katlama ve Yapıştırma Makinası",
+      description:
+        "Otomatik kutu katlama ve yapıştırma işlemleri için yüksek hızlı makina.",
+      propertyLabels: {
+        maxCardboardWidth: "Maximum Mukavva Genişliği",
+        minCardboardWidth: "Minimum Mukavva Genişliği",
+        capacity: "Kapasitesi",
+        gluingSystem: "Yapıştırma Sistemi",
+        countingSystem: "Sayma ve Ayırma Sistemi",
+      },
+    },
+    en: {
+      name: "Box Folding and Gluing Machine",
+      description:
+        "High-speed machine for automatic box folding and gluing operations.",
+      propertyLabels: {
+        maxCardboardWidth: "Maximum Cardboard Width",
+        minCardboardWidth: "Minimum Cardboard Width",
+        capacity: "Capacity",
+        gluingSystem: "Gluing System",
+        countingSystem: "Counting and Separation System",
+      },
+    },
+    specs: [
+      { property: "maxCardboardWidth", values: ["1300×2800 mm"] },
+      { property: "minCardboardWidth", values: ["300×600 mm"] },
+      { property: "capacity", values: ["120 m/dk"] },
+      {
+        property: "gluingSystem",
+        values: ["Alt üst kulak yapıştırma sistemi"],
+      },
+      { property: "countingSystem", values: ["Elektronik Sistem"] },
+    ],
+  },
+  grooving: {
+    tr: {
+      name: "SS Yarı Otomatik Rill Makinası",
+      description:
+        "Yarı otomatik rill işlemleri için yüksek hassasiyetli makina.",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+
+        machineWidth: "Makine Genişliği",
+        combinationCount: "Kombinasyon Sayısı",
+        axisCount: "Eksen Sayısı",
+        powerMotor: "Güç Motoru",
+        grooveDistance: "Ruse Mesafesi",
+      },
+    },
+    en: {
+      name: "SS Semi-Automatic Grooving Machine",
+      description:
+        "High-precision semi-automatic grooving machine for efficient operations.",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+
+        machineWidth: "Machine Width",
+        combinationCount: "Number of Combinations",
+        axisCount: "Number of Axes",
+        powerMotor: "Power Motor",
+        grooveDistance: "Groove Distance",
+      },
+    },
+    specs: [
+      { property: "machineModel", values: ["TEKNİK ÖZELLİKLERİ"] },
+
+      { property: "machineWidth", values: ["2200 / 2400 / 2600 / 2800 mm"] },
+      { property: "combinationCount", values: ["2"] },
+      { property: "axisCount", values: ["2"] },
+      { property: "powerMotor", values: ["1,5 kw"] },
+      { property: "grooveDistance", values: ["70 mm"] },
+    ],
+  },
+  "manual-stitching": {
+    tr: {
+      name: "KS 1300 Yarı Otomatik Dikiş Makinası",
+      description:
+        "1300 mm dikiş çubuğu uzunluğuna sahip yarı otomatik dikiş makinası. Paket ve fraksiyonel kutuların dikiş işlemleri için idealdir.",
+      propertyLabels: {
+        machineModel: "MAKİNA MODELİ",
+        stitchBarLength: "Dikiş Çubuğu Uzunluğu (mm)",
+        capacity: "Kapasite (adet/saat)",
+        stitchSizes: "Dikiş Ebatları",
+        spareParts: "Yedek Parçalar",
+        machineDimensions: "Makina Ebatları (m)",
+      },
+    },
+    en: {
+      name: "KS 1300 Semi-Automatic Stitching Machine",
+      description:
+        "Semi-automatic stitching machine with 1300 mm stitch bar length. Ideal for stitching packaging and fractional boxes.",
+      propertyLabels: {
+        machineModel: "MACHINE MODEL",
+        stitchBarLength: "Stitch Bar Length (mm)",
+        capacity: "Capacity (pcs/hour)",
+        stitchSizes: "Stitch Sizes",
+        spareParts: "Spare Parts",
+        machineDimensions: "Machine Dimensions (m)",
+      },
+    },
+    specs: [
+      { property: "machineModel", values: ["KS 1300"] },
+      { property: "stitchBarLength", values: ["1300 mm"] },
+      { property: "capacity", values: ["500 - 1000 adet/saat"] },
+      {
+        property: "stitchSizes",
+        values: ["Paketlerin ve fraksiyonel kutuların farklı ebatlarda dikimi"],
+      },
+      { property: "spareParts", values: ["Her türlü yedek parça mevcuttur."] },
+      { property: "machineDimensions", values: ["0.65 x 1.80 m"] },
+    ],
+  },
+  "channel-opening": {
+    tr: {
+      name: "MS Yarı Otomatik Kanal Açma Makinası",
+      description:
+        "2200 mm ve 2700 mm maksimum mukavva boyutu seçenekleriyle yüksek kapasiteli yarı otomatik Kanal Açma makinası.",
+      propertyLabels: {
+        maxCardboardSize: "Maksimum Mukavva Boyutu",
+        channelDepth: "Kanal Derinliği",
+        channelWidth: "Kanal Genişliği",
+        mainPower: "Ana Güç",
+        bladeClosureDistance: "Bıçak Gövdeleri Kapanış Mesafesi",
+        blades: "Bıçaklar",
+        capacity: "Kapasite",
+      },
+    },
+    en: {
+      name: "MS Semi-Automatic Washing Machine",
+      description:
+        "High-capacity semi-automatic washing machine with maximum cardboard sizes of 2200 mm and 2700 mm.",
+      propertyLabels: {
+        maxCardboardSize: "Maximum Cardboard Size",
+        channelDepth: "Channel Depth",
+        channelWidth: "Channel Width",
+        mainPower: "Main Power",
+        bladeClosureDistance: "Blade Body Closure Distance",
+        blades: "Blades",
+        capacity: "Capacity",
+      },
+    },
+    specs: [
+      { property: "maxCardboardSize", values: ["2200 mm", "2700 mm"] },
+      { property: "channelDepth", values: ["370 mm", "500 mm"] },
+      { property: "channelWidth", values: ["8 mm", "8 mm"] },
+      { property: "mainPower", values: ["2,2 kw", "2,2 kw"] },
+      { property: "bladeClosureDistance", values: ["150 mm", "150 mm"] },
+      { property: "blades", values: ["SPK 2080", "SPK 2080"] },
+      {
+        property: "capacity",
+        values: ["1500 adet / saat", "1500 adet / saat"],
+      },
+    ],
+  },
+  cutting: {
+    tr: {
+      name: "Yarı Otomatik Kesim Makinası (Vargel)",
+      description:
+        "1300 x 1800 mm kesici boyutuna sahip, yarı otomatik stanz kesim makinası.",
+      propertyLabels: {
+        cuttingSize: "Kesici Boyutu",
+        mainPower: "Ana Güç",
+        capacity: "Kapasite",
+        height: "Yükseklik",
+        length: "Uzunluk",
+        width: "Genişlik",
+      },
+    },
+    en: {
+      name: "FS 1300 Semi-Automatic Die-Cutting Machine",
+      description:
+        "Semi-automatic die-cutting machine with cutting size of 1300 x 1800 mm. Ideal for packaging production.",
+      propertyLabels: {
+        cuttingSize: "Cutting Size",
+        mainPower: "Main Power",
+        capacity: "Capacity",
+        height: "Height",
+        length: "Length",
+        width: "Width",
+      },
+    },
+    specs: [
+      { property: "cuttingSize", values: ["1300 x 1800 mm"] },
+      { property: "mainPower", values: ["1,5 KW"] },
+      { property: "capacity", values: ["1000 adet / saat"] },
+      { property: "height", values: ["1200 mm"] },
+      { property: "length", values: ["4000 mm"] },
+      { property: "width", values: ["1850 mm"] },
+    ],
+  },
+ "box-stitching": {
+  tr: {
+    name: "US 1300 Yarı Otomatik Koli Dikiş Makinası",
+    description:
+      "Karton kutular için sağlam ve hızlı dikiş imkanı sunan yarı otomatik koli dikiş makinası.",
+    propertyLabels: {
+      machineModel: "MAKİNA MODELİ",
+      machineWidth: "Makine Genişliği",
+      machineLength: "Makine Uzunluğu",
+      machineHeight: "Makine Yüksekliği",
+      minCartonSize: "Minimum Karton Boyutu",
+      maxCardboardSize: "Maksimum Mukavva Boyutu",
+      capacity: "Kapasite",
+    },
+  },
+  en: {
+    name: "US 1300 Semi-Automatic Box Stitching Machine",
+    description:
+      "Semi-automatic box stitching machine providing fast and strong stitching for cardboard boxes.",
+    propertyLabels: {
+      machineModel: "MACHINE MODEL",
+      machineWidth: "Machine Width",
+      machineLength: "Machine Length",
+      machineHeight: "Machine Height",
+      minCartonSize: "Minimum Carton Size",
+      maxCardboardSize: "Maximum Cardboard Size",
+      capacity: "Capacity",
+    },
+  },
+  specs: [
+    { property: "machineModel", values: ["TEKNİK ÖZELLİKLERİ"] },
+
+    { property: "machineWidth", values: ["2750 mm"] },
+    { property: "machineLength", values: ["3000 mm"] },
+    { property: "machineHeight", values: ["1900 mm"] },
+    { property: "minCartonSize", values: ["30 cm"] },
+    { property: "maxCardboardSize", values: ["380 cm"] },
+    { property: "capacity", values: ["1000 - 1500 adet / saat"] },
+  ],
+},
+ "two-color-printing": {
+  tr: {
+    name: "CS 1500 Yarı Otomatik Çift Renk Baskı Makinası",
+    description:
+      "Oluklu mukavva üzeri yüksek kaliteli baskı için tasarlanmış çift renk baskı makinası.",
+    propertyLabels: {
+      machineModel: "MAKİNA MODELİ",
+      maxCardboardSize: "Maksimum Mukavva Boyutu",
+      minCardboardSize: "Minimum Mukavva Boyutu",
+      printSize: "Baskı Boyutu",
+      clichéThickness: "Klişe Kalınlığı",
+      capacity: "Kapasite",
+      mainPower: "Ana Güç",
+    },
+  },
+  en: {
+    name: "CS 1500 Semi-Automatic Two Color Printing Machine",
+    description:
+      "Two-color printing machine designed for high quality printing on corrugated cardboard.",
+    propertyLabels: {
+      machineModel: "MACHINE MODEL",
+      maxCardboardSize: "Maximum Cardboard Size",
+      minCardboardSize: "Minimum Cardboard Size",
+      printSize: "Printing Size",
+      clichéThickness: "Plate Thickness",
+      capacity: "Capacity",
+      mainPower: "Main Power",
+    },
+  },
+  specs: [
+    { property: "machineModel", values: ["TEKNİK ÖZELLİKLERİ"] },
+
+    { property: "maxCardboardSize", values: ["1400 x 1900 mm"] },
+    { property: "minCardboardSize", values: ["200 x 400 mm"] },
+    { property: "printSize", values: ["1100 x 1900 mm"] },
+    { property: "clichéThickness", values: ["5,50 mm"] },
+    { property: "capacity", values: ["1500 adet / saat"] },
+    { property: "mainPower", values: ["2,2 KW"] },
+  ],
+},
+"box-stitching-gluing": {
+  tr: {
+    name: "US1300 Yarı Otomatik Paketleme Dikiş ve Yapıştırma Makinası",
+    description:
+      "Dikiş ve yapıştırma işlemlerini tek hatta birleştiren, verimli üretim için tasarlanmış makina.",
+    propertyLabels: {
+      machineModel: "MAKİNA MODELİ",
+      machineWidth: "Makina Eni",
+      machineLength: "Makina Boyu",
+      machineHeight: "Makine Yüksekliği",
+      minCardboardSize: "Minimum Mukavva Ebatı",
+      maxCardboardSize: "Maksimum Mukavva Ebatı",
+      capacity: "Kapasite",
+    },
+  },
+  en: {
+    name: "US1300 Semi-Automatic Packaging Stitching and Gluing Machine",
+    description:
+      "Machine that combines stitching and gluing operations in a single line for efficient production.",
+    propertyLabels: {
+      machineModel: "MACHINE MODEL",
+      machineWidth: "Machine Width",
+      machineLength: "Machine Length",
+      machineHeight: "Machine Height",
+      minCardboardSize: "Minimum Cardboard Size",
+      maxCardboardSize: "Maximum Cardboard Size",
+      capacity: "Capacity",
+    },
+  },
+  specs: [
+    { property: "machineModel", values: ["TEKNİK ÖZELLİKLERİ"] },
+
+    { property: "machineWidth", values: ["3500 mm"] },
+    { property: "machineLength", values: ["5000 mm"] },
+    { property: "machineHeight", values: ["1900 mm"] },
+    { property: "minCardboardSize", values: ["30 cm"] },
+    { property: "maxCardboardSize", values: ["300 mm"] },
+    { property: "capacity", values: ["1000 - 1500 adet / saat"] },
+  ],
+},
+};
+
+// --- Dil desteği ---
+const translations = {
+  tr: {
+    machineImages: "Makina Resimleri",
+    printImages: "Baskı Resimleri",
+    machineVideos: "Makina Videoları",
+    specifications: "Teknik Özellikler",
+    feature: "Özellik",
+    newLabel:"Yeni"
+  },
+  en: {
+    machineImages: "Machine Images",
+    printImages: "Print Images",
+    machineVideos: "Machine Videos",
+    specifications: "Technical Specifications",
+    feature: "Feature",
+     newLabel:"New"
+  },
+};
+
+function ProductDetailContent() {
+  const searchParams = useSearchParams();
+  const { language } = useLanguage();
+  const [activeTab, setActiveTab] = useState("images");
+  const [modalVideo, setModalVideo] = useState(null);
+  const [modalImageIndex, setModalImageIndex] = useState(null);
+  const rawProduct = searchParams.get("product") || "sloter";
+  const productKey = Object.keys(productsMedia).includes(
+    rawProduct.toLowerCase()
+  )
+    ? rawProduct.toLowerCase()
+    : "sloter";
+
+const media = productsMedia[productKey];
+
+const allImages = [
+  ...(media?.images || []),
+  ...(media?.prints || []),
+];
+  const productData = productSpecs[productKey] || productSpecs["sloter"];
+  const productInfo = productData[language] || productData.tr; // her durumda TR/EN çalışır
+  const t = translations[language] || translations.tr;
+useEffect(() => {
+  const handleKey = (e) => {
+    if (modalImageIndex === null) return;
+
+    if (e.key === "ArrowRight") {
+      setModalImageIndex((prev) => (prev + 1) % allImages.length);
+    }
+
+    if (e.key === "ArrowLeft") {
+      setModalImageIndex(
+        (prev) => (prev - 1 + allImages.length) % allImages.length
+      );
+    }
+
+    if (e.key === "Escape") {
+      setModalImageIndex(null);
+    }
+  };
+
+  window.addEventListener("keydown", handleKey);
+  return () => window.removeEventListener("keydown", handleKey);
+}, [modalImageIndex, allImages.length]);
+  return (
+    <div className="min-h-screen">
+      <main className="pt-32 pb-24">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold mb-4">{productInfo.name}</h1>
+          <p className="text-lg mb-8">{productInfo.description}</p>
+
+          {/* Tabs */}
+          <div className="flex gap-4 mb-8 border-b border-border">
+            {["images", "prints", "videos"]
+              .filter((tab) => {
+                if (tab === "images") return media.images?.length > 0;
+                if (tab === "prints") return media.prints?.length > 0;
+                if (tab === "videos") return media.videos?.length > 0;
+                return false;
+              })
+              .map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-6 py-3 font-medium transition-colors ${
+                    activeTab === tab
+                      ? "border-b-2 border-accent text-accent"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {
+                    t[
+                      tab === "images"
+                        ? "machineImages"
+                        : tab === "prints"
+                          ? "printImages"
+                          : "machineVideos"
+                    ]
+                  }
+                </button>
+              ))}
+          </div>
+
+          {/* Media Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {activeTab === "images" &&
+              media.images.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`${media.name} ${i + 1}`}
+                  onClick={() => setModalImageIndex(i)}
+                  className="w-full h-64 object-contain rounded-lg shadow-lg"
+                />
+              ))}
+
+            {activeTab === "prints" &&
+              media.prints.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`Print ${i + 1}`}
+                  onClick={() => setModalImageIndex(media.images.length + i)}
+                  className="w-full h-64 object-contain rounded-lg shadow-lg"
+                />
+              ))}
+
+            {activeTab === "videos" &&
+              media.videos.map((video, i) => (
+                <div
+                  key={i}
+                  className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                  onClick={() => setModalVideo(video.src)}
+                >
+                  <img
+                    src={video.thumbnail}
+                    className="w-full h-full object-cover"
+                    alt={`Video ${i + 1}`}
+                  />
+                  {video.isNew && (
+                    <span className="absolute top-2 left-2 z-10 bg-accent text-accent-foreground text-xs font-semibold px-2 py-1 rounded-full shadow">
+                      {t.newLabel}
+                    </span>
+                  )}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                      <div className="w-13 h-13 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Play
+                          className="text-accent-foreground ml-1"
+                          size={16}
+                          fill="currentColor"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+
+          {/* Video Modal */}
+          {modalVideo && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) setModalVideo(null);
+              }}
+            >
+              <div className="relative w-11/12 max-w-4xl bg-black rounded-lg shadow-lg p-4">
+                <button
+                  onClick={() => setModalVideo(null)}
+                  className="absolute top-2 right-2 text-white hover:text-accent"
+                >
+                  <X size={28} />
+                </button>
+                <video
+                  src={modalVideo}
+                  controls
+                  autoPlay
+                  className="w-full max-h-[70vh] rounded-lg"
+                />
+              </div>
+            </div>
+          )}
+          {modalImageIndex !== null && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+              onClick={() => setModalImageIndex(null)}
+            >
+              <div
+                className="relative w-full max-w-6xl px-4 flex flex-col items-center"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* IMAGE */}
+                <img
+                  src={allImages[modalImageIndex]}
+                  className="max-h-[75vh] object-contain rounded-lg"
+                />
+
+                {/* CONTROLS */}
+                <div className="flex items-center gap-6 mt-6">
+                  {/* LEFT */}
+                  <button
+                    onClick={() =>
+                      setModalImageIndex(
+                        (prev) =>
+                          (prev - 1 + allImages.length) % allImages.length,
+                      )
+                    }
+                    className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg"
+                  >
+                    ←
+                  </button>
+
+                  {/* CLOSE */}
+                  <button
+                    onClick={() => setModalImageIndex(null)}
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+                  >
+                    X
+                  </button>
+
+                  {/* RIGHT */}
+                  <button
+                    onClick={() =>
+                      setModalImageIndex(
+                        (prev) => (prev + 1) % allImages.length,
+                      )
+                    }
+                    className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg"
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Teknik Özellikler Tablosu */}
+          <div className="max-w-6xl mx-auto mt-8">
+            <h2 className="text-3xl font-bold mb-4">{t.specifications}</h2>
+            <div className="overflow-x-auto bg-card rounded-lg shadow-lg">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-primary text-primary-foreground">
+                    <th className="px-6 py-4 text-left font-semibold">
+                      {t.feature}
+                    </th>
+                    {productData.specs[0].values.map((model, i) => (
+                      <th
+                        key={i}
+                        className="px-6 py-4 text-center font-semibold"
+                      >
+                        {model}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {productData.specs.slice(1).map((spec, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-secondary/5" : ""}>
+                      <td className="px-6 py-4 font-medium">
+                        {productInfo.propertyLabels[spec.property]}
+                      </td>
+                      {spec.values.map((v, j) => (
+                        <td key={j} className="px-6 py-4 text-center">
+                          {v}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default function ProductDetail() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductDetailContent />
+    </Suspense>
+  );
+}

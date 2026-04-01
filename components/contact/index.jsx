@@ -1,0 +1,218 @@
+"use client";
+
+import { MapPin, Phone, Fan as Fax, Mail, Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
+
+const translations = {
+  tr: {
+    title: "İletişim",
+    subtitle: "Bizimle iletişime geçin",
+    address: "Adres",
+    phone: "Telefon",
+    fax: "Faks",
+    email: "E-posta",
+    website: "Web Sitesi",
+    getDirections: "Yol Tarifi Al",
+    addressLine1: "Osman Gazi Mahallesi",
+    addressLine2: "3123. Sokak No:3/1",
+    addressLine3: "Kıraç / Esenyurt / İstanbul / Türkiye / 34518",
+  },
+  en: {
+    title: "Contact",
+    subtitle: "Get in touch with us",
+    address: "Address",
+    phone: "Phone",
+    fax: "Fax",
+    email: "Email",
+    website: "Website",
+    getDirections: "Get Directions",
+    addressLine1: "Osman Gazi Neighborhood",
+    addressLine2: "3123rd Street No:3/1",
+    addressLine3: "Kıraç / Esenyurt / Istanbul / Turkey / 34518",
+  },
+};
+
+export default function Contact() {
+  const { language } = useLanguage();
+
+  const t = translations[language] || translations.tr;
+
+  return (
+    <section id="contact" className="py-24 bg-secondary scroll-mt-16">
+      <div className="container mx-auto px-4">
+        {/* Başlık */}
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">{t.title}</h2>
+          <p className="text-xl text-muted-foreground">{t.subtitle}</p>
+        </div>
+
+        {/* İçerik */}
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Bilgiler */}
+          <div className="bg-card p-8 rounded-xl shadow-lg border border-border">
+            <div className="space-y-6">
+              {/* Adres */}
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                  <MapPin className="text-accent" size={24} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">{t.address}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t.addressLine1}
+                    <br />
+                    {t.addressLine2}
+                    <br />
+                    {t.addressLine3}
+                  </p>
+                </div>
+              </div>
+
+              {/* Telefon */}
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                  <Phone className="text-accent" size={24} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">{t.phone}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    <a
+                      href="tel:+902126232156"
+                      className="hover:text-accent transition"
+                    >
+                      +00 90 212 623 21 56
+                    </a>
+                    <br />{" "}
+                    <a
+                      href="tel:+902126232157"
+                      className="hover:text-accent transition"
+                    >
+                      +00 90 212 623 21 57
+                    </a>
+                    <br />{" "}
+                    <a
+                      href="tel:+902126232158"
+                      className="hover:text-accent transition"
+                    >
+                      +00 90 212 623 21 58
+                    </a>
+                    <br />
+                    <a
+                      href="tel:+902126232425"
+                      className="hover:text-accent transition"
+                    >
+                      +00 90 212 623 24 25
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              {/* Faks */}
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                  <Fax className="text-accent" size={24} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">{t.fax}</h3>
+                  <p className="text-muted-foreground">+00 90 212 623 24 26</p>
+                </div>
+              </div>
+
+              {/* E-posta */}
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                  <Mail className="text-accent" size={24} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">{t.email}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    <a
+                      href="mailto:info@serimakina.com"
+                      className="hover:text-accent transition"
+                    >
+                      info@serimakina.com
+                    </a>
+                    <br />
+                    <a
+                      href="mailto:seri@serimakina.com"
+                      className="hover:text-accent transition"
+                    >
+                      seri@serimakina.com
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              {/* Web Sitesi */}
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                  <Globe className="text-accent" size={24} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg mb-2">{t.website}</h3>
+                  <a
+                    href="https://www.serimakina.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-accent transition"
+                  >
+                    www.serimakina.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Yol Tarifi Butonu */}
+              <Button
+                asChild
+                className="w-full bg-accent hover:bg-accent/90 mt-6"
+              >
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=41.054546,28.635093"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="mr-2" size={18} />
+                  {t.getDirections}
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Harita */}
+          <div className="bg-card rounded-xl shadow-lg overflow-hidden border border-border min-h-[400px]">
+            <iframe
+              src="https://www.google.com/maps/d/u/0/embed?mid=1tk3g6FMk3Qj7QhoKdN94n-bsg0oBs0Xb"
+              width="100%"
+              height="100%"
+              className="w-full h-full"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        {false && (
+  <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg">
+    <iframe
+      src="https://www.google.com/maps?q=41.054546,28.635093&z=18&output=embed&t=k"
+      className="w-full h-full border-0"
+      loading="lazy"
+      allowFullScreen
+    ></iframe>
+
+    <a
+      href="https://www.google.com/maps/dir/?api=1&destination=41.054546,28.635093"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="absolute right-4 bottom-4 bg-accent text-white px-4 py-2 rounded-xl shadow-lg hover:bg-accent/90 transition flex items-center gap-2"
+    >
+      🧭 Yol Tarifi Başlat
+    </a>
+  </div>
+)}
+        </div>
+      </div>
+    </section>
+  );
+}

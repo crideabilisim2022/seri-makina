@@ -36,7 +36,7 @@ const productsMedia = {
       "/img/jumbo-sloter/baski/12.jpeg",
       "/img/jumbo-sloter/baski/13.jpeg",
       "/img/jumbo-sloter/baski/14.jpeg",
-      "/img/jumbo-sloter/baski/15.jpeg",
+      "/img/jumbo-sloter/baski/15.jpg",
       "/img/jumbo-sloter/baski/16.jpeg",
       "/img/jumbo-sloter/baski/17.jpeg",
     "/img/slotter/baski/9.jpeg",

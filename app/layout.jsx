@@ -2,7 +2,7 @@ import "./globals.css";
 import { Poppins, Roboto_Slab } from "next/font/google";
 import ClientLayout from "./client-layout";
 import { LanguageProvider } from "@/context/LanguageContext"; // ✅ eklendi
-
+import { Toaster } from 'react-hot-toast';
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -29,11 +29,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr" className={`${poppins.variable} ${robotoSlab.variable}`}>
-      <body className="font-sans">
+      <body className="font-sans" suppressHydrationWarning>
         <LanguageProvider>
           {" "}
           {/* ✅ tüm siteyi kapsıyor */}
           <ClientLayout>{children}</ClientLayout>
+          <Toaster position="top-right" reverseOrder={false} />
         </LanguageProvider>
       </body>
     </html>

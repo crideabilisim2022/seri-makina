@@ -26,7 +26,7 @@ export async function POST(req) {
       secure: true,
       auth: {
         user: "ik@serimakina.com",
-        pass: process.env.MAIL_PASSWORD,
+        pass: "NsnkynklR--9102",
       },
        tls: {
         // ⚠️ Sertifika uyuşmazlığını görmezden gel

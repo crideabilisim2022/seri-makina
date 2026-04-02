@@ -116,7 +116,7 @@ export default function Header({ language, setLanguage }) {
           <div className="flex items-center">
             <Link href="/" className="flex items-center cursor-pointer">
               <Image
-                src="/seri_makina.png"
+                src="/logo4.png"
                 alt="Seri Makina Logo"
                 width={250}
                 height={80}

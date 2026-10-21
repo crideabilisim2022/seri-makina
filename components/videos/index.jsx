@@ -13,6 +13,9 @@ const translations = {
     video1Title: "Seri & Toprint Makina",
     video2Title: "Seri & Toprint Makina",
     video3Title: "Seri & Bosphorus Makina",
+    video4Title: "Black Serial Jumbo Kutu Yapım Makinesi",
+    video5Title: "Black Serial Makinesi",
+    video6Title: "Bosphorus Makinesi",
   },
   en: {
     title: "Videos",
@@ -21,6 +24,10 @@ const translations = {
     video1Title: "Seri & Toprint Machine",
     video2Title: "Seri & Toprint Machine",
     video3Title: "Seri & Bosphorus Machine",
+
+    video4Title: "Black Serial Jumbo Case Maker Machine",
+    video5Title: "Black Serial Machine",
+    video6Title: "Bosphorus Machine",
   },
 };
 
@@ -31,24 +38,42 @@ export default function Videos() {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const videos = [
+     {
+      title: t.video4Title,
+      thumbnail: "/videos/fairs/1.JPG",
+      videoUrl: "videos/fairs/1.mp4",
+      isNew: true,
+    },
+     {
+      title: t.video5Title,
+      thumbnail: "/videos/fairs/2.JPG",
+      videoUrl: "videos/fairs/2.mp4",
+      isNew: true,
+    },
+     {
+      title: t.video6Title,
+      thumbnail: "/videos/fairs/3.JPG",
+      videoUrl: "videos/fairs/3.mp4",
+      isNew: true,
+    },
     {
       title: t.video1Title,
       thumbnail: "/img/videos/9.JPG",
       videoUrl: "videos/toprint/toprint-1.mp4",
-      isNew: true,
+      isNew: false,
     },
     {
       title: t.video2Title,
       thumbnail: "/img/videos/10.JPG",
       videoUrl: "videos/toprint/toprint-2.mp4",
-      isNew: true,
+      isNew: false,
 
     },
     {
       title: t.video3Title,
       thumbnail: "/img/bosphorus/img1.JPG",
       videoUrl: "videos/bosphorus/bosphorus-1.mp4",
-      isNew: true,
+      isNew: false,
 
     },
   ];
